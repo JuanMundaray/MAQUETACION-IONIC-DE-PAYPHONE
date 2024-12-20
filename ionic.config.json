@@ -1,0 +1,7 @@
+{
+  "name": "MAQUETACION_PAYPHONE_ADMIN_DASHBOARD_IONIC",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
