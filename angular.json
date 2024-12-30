@@ -31,8 +31,28 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "styles": 
+            [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/boxicons/css/boxicons.min.css",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css",
+              "node_modules/ngx-spinner/animations/timer.css",  
+              "node_modules/datatables.net-buttons-dt/css/buttons.dataTables.css",
+              "src/global.scss",
+              "src/theme/variables.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/sweetalert2/dist/sweetalert2.all.min.js",
+              "node_modules/boxicons/dist/boxicons.js",
+              "node_modules/datatables.net-buttons/js/dataTables.buttons.js",
+              "node_modules/jszip/dist/jszip.min.js",
+              "node_modules/datatables.net-buttons/js/buttons.html5.js",
+              "node_modules/datatables.net-buttons/js/buttons.print.js",
+              "node_modules/datatables.net-buttons/js/buttons.colVis.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -136,7 +156,8 @@
   "cli": {
     "schematicCollections": [
       "@ionic/angular-toolkit"
-    ]
+    ],
+    "analytics": false
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

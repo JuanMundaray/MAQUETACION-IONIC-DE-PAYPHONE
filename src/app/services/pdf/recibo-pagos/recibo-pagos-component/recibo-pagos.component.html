@@ -1,0 +1,150 @@
+<div class="p-3 d-none" id="reciboPago">
+  <div>
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-7 col-lg-6">
+        <img
+          src="../../../../assets/images/logo.png"
+          class="ms-lg-4 mb-3 img-fluid"
+          alt="Logo Payphone"
+        />
+      </div>
+      <div class="col-12 col-lg-6">
+        <table class="table table-sm">
+          <tbody>
+            <tr class="bg-primary justify-content-center">
+              <td class="text-light pt-0 pb-0 text-center">
+                <strong>SUCURSAL</strong>
+              </td>
+              <td class="text-light pt-0 pb-0 text-center">
+                <strong>FECHA</strong>
+              </td>
+            </tr>
+            <tr class="">
+              <td class="text-center">
+                <strong>{{ cliente.sucursal }}</strong>
+              </td>
+              <td class="text-center">
+                <strong>{{ cliente.formFech }}</strong>
+              </td>
+            </tr>
+            <tr class="bg-primary justify-content-center">
+              <td class="text-light pt-0 pb-0 text-center">
+                <strong>NOMBRE DEL VENDEDOR</strong>
+              </td>
+              <td class="text-light pt-0 pb-0 text-center">
+                <strong>NRO. DE REFERENCIA</strong>
+              </td>
+            </tr>
+            <tr class="">
+              <td class="text-center">
+                <strong>{{
+                  cliente.nombreUsuario
+                    ? cliente.nombreUsuario.toUpperCase()
+                    : ""
+                }}</strong>
+              </td>
+              <td class="text-center">
+                <strong>{{ cliente.ref }}</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div
+      class="pt-1 pb-1 justify-content-center d-flex"
+      style="background-color: #009dd5"
+    >
+      <span class="text-light"
+        ><strong style="font-size: 1.1em">RECIBO DE PAGO</strong></span
+      >
+    </div>
+
+    <table class="table table-bordered mb-0">
+      <tr class="p-0">
+        <td>
+          <div class="row pb-0">
+            <div class="col-12 col-lg-6 ps-1 pe-1">
+              <div class="table-responsive">
+                <table class="table table-sm">
+                  <thead>
+                    <tr style="background-color: #81bc3a">
+                      <th class="text-light text-center" colspan="2">
+                        DATOS PERSONALES
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background-color: #bce788">
+                      <td class="ps-3" width="30%">Nombre completo:</td>
+                      <td width="70%">
+                        {{
+                          cliente.nombCliente
+                            ? cliente.nombCliente.toUpperCase()
+                            : ""
+                        }}
+                      </td>
+                    </tr>
+                    <tr style="background-color: #bce788">
+                      <td class="ps-3">CURP:</td>
+                      <td>{{ cliente.clientCurp }}</td>
+                    </tr>
+                    <tr style="background-color: #bce788">
+                      <td class="ps-3">Nro. teléfono:</td>
+                      <td>{{ cliente.clientPhone }}</td>
+                    </tr>
+                    <tr style="background-color: #bce788">
+                      <td class="ps-3">Device ID:</td>
+                      <td>{{ cliente.deviceId }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 pe-0">
+              <div class="table-responsive">
+                <table class="table table-sm">
+                  <thead>
+                    <tr style="background-color: #f49900">
+                      <th class="text-light text-center" colspan="2">
+                        DATOS DEL CRÉDITO
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background-color: #fcdba4">
+                      <td class="ps-3" width="40%">Monto abonado:</td>
+                      <td width="60%">{{ cliente.pamountF }}</td>
+                    </tr>
+                    <tr style="background-color: #fcdba4">
+                      <td class="ps-3">Parcialidades pagadas:</td>
+                      <td>{{ cliente.parcialCanc }}</td>
+                    </tr>
+                    <tr style="background-color: #fcdba4">
+                      <td class="ps-3">Parcialidades pendientes:</td>
+                      <td>{{ cliente.parcialPend }}</td>
+                    </tr>
+                    <tr style="background-color: #fcdba4">
+                      <td class="ps-3">Proxima fecha de pago:</td>
+                      <td>{{ cliente.fechVenc }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <div
+      class="pb-1 justify-content-center d-flex"
+      style="background-color: #009dd5"
+    >
+      <span class="text-light"
+        ><strong style="font-size: 1.1em">PAGO EN EFECTIVO</strong></span
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.container {
+  position: relative;
+  top: 100px;
+}
+.titulo {
+  font-family: "openSans-ExtraBold";
+  font-size: 1.7em;
+  letter-spacing: 0.1em;
+}
+
+.botonback {
+  box-shadow: 2px 4px 10px rgba(116, 170, 198, 0.843);
+}
+
+.iconXl {
+  font-size: 2.5rem;
+}
+
+
+.subtitle{
+  background:url('../../assets/images/login/frame-6-1@2x.png'); border: 5px solid rgb(174, 4, 4);
+}
+
+ion-button.botonC {
+  --background: #ffffff;
+  box-shadow: 2px 5px 15px rgba(5, 41, 108, 0.732);
+  width: 130px;
+  height: 130px;
+  border: solid #666666 1px;
+  color: #666666;
+}
+
+
+@media screen and (max-width: 1360px) {
+  .container {
+    padding-bottom: 40px;
+  }
+}

@@ -1,0 +1,104 @@
+[{
+   "id":"0",
+   "marca":"blu",
+   "descripcion":"Blu Vivo 5 Mini",
+   "enganche": "1,980.00",
+   "img":"4893210.jpg"
+}, {
+   "id":"1",
+   "marca":"huawei",
+   "descripcion":"Huawei Honor X9 pro",
+   "enganche": "1,259.99",
+   "img":"354651.jpg"
+ }, {
+   "id":"2",
+   "marca":"huawei",
+   "descripcion":"Huawei Nova 9 8-128 Gb",
+   "enganche": "999.99",
+   "img":"9832110.jpg"
+}, {
+   "id":"3",
+   "marca":"huawei",
+   "descripcion":"Huawei Novo P40 Pro 5g Dual Sim",
+   "enganche": "1,810.00",
+   "img":"354643232.jpg"
+}, {
+   "id":"4",
+   "marca":"huawei",
+   "descripcion":"Huawei P30 Pro New Edition 256gb Silver Frost Dual Sim",
+   "enganche": "2,549.99",
+   "img":"3203465.jpg"
+}, {
+   "id":"5",
+   "marca":"huawei",
+   "descripcion":"Huawei Y9a 6-128 Gb",
+   "enganche": "609.99",
+   "img":"102349.jpg"
+}, {
+   "id":"6",
+   "marca":"lg",
+   "descripcion":"LG K8s Android 16gb + 2gb Ram Quad 8mp 4g Qualcomm Oreo 8.1",
+   "enganche": "759.99",
+   "img":"41565793.jpg"
+}, {
+   "id":"7",
+   "marca":"lg",
+   "descripcion":"LG K50",
+   "enganche": "4,150.00",
+   "img":"354498112.jpg"
+}, {
+   "id":"8",
+   "marca":"lg",
+   "descripcion":"LG Q60 Hd + Fullvision 3gb Ram 64gb Pantalla 6.2",
+   "enganche": "2,199.99",
+   "img":"3542131.jpg"
+}, {
+   "id":"9",
+   "marca":"nokia",
+   "descripcion":"Nokia 5.1 Plus Android",
+   "enganche": "1,200.99",
+   "img":"846579654.jpg"
+}, {
+   "id":"10",
+   "marca":"nokia",
+   "descripcion":"Nokia C01 Plus 32 Gb 1 Gb Ram Dual Sim 4g Lte",
+   "enganche": "2,249.20",
+   "img":"451321654.jpg"
+}, {
+   "id":"11",
+   "marca":"redmi",
+   "descripcion":"Redmi 9a 4-64gb",
+   "enganche": "3,440.30",
+   "img":"2132321.jpg"
+}, {
+   "id":"12",
+   "marca":"samsung",
+   "descripcion":"Samsung Galaxy A13 4gb Ram - 64gb Memoria",
+   "enganche": "752.55",
+   "img":"2165465.jpg"
+}, {
+   "id":"13",
+   "marca":"samsung",
+   "descripcion":"Samsung Galaxy A21s 64gb",
+   "enganche": "1,654.00",
+   "img":"35465465.jpg"
+}, {
+   "id":"14",
+   "marca":"redmi",
+   "descripcion":"Xiaomi Redmi Note 11 Pro 5g 128 Gb",
+   "enganche": "950,00",
+   "img":"321654.jpg"
+}, {
+   "id":"15",
+   "marca":"redmi",
+   "descripcion":"Xiaomi Redmi Note 11s 128 Gb - 6gb Ram",
+   "enganche": "1,520.00",
+   "img":"74635246.jpg"
+}, {
+   "id":"16",
+   "marca":"zte",
+   "descripcion":"Zte Blade A7s 64gb - 2gb",
+   "enganche": "450.00",
+   "img":"3549489.jpg"
+}]
+

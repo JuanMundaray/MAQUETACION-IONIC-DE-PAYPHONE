@@ -1,3 +1,10 @@
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
+
+
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -35,3 +42,391 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+  }
+  html {
+    min-height: 100%;
+    position: relative;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    font-size: 0.875em;
+    margin-bottom: 30px;
+    font-family: "poppins-Regular";
+    background-color: #e5f3f6 !important;
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+  .pointer {
+    cursor: pointer;
+  }
+  .divContLog {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
+  .fontZise20 {
+    font-size: 20px;
+  }
+  .fontZise13 {
+    font-size: 13px;
+  }
+  .spnLeft {
+    border-radius: 10px 0px 0px 10px !important;
+  }
+  .spnRig {
+    border-radius: 0px 10px 10px 0px !important;
+  }
+  .spnLeft,
+  .spnRig {
+    font-size: 1.6em;
+    background-color: #8c8c8c !important;
+    color: #fff !important;
+    border: 1px solid #8c8c8c !important;
+  }
+  .err {
+    color: red;
+    font-weight: bold;
+    font-size: 0.84em;
+    position: relative;
+  }
+  table {
+    overflow-x: auto;
+  }
+  .bordes {
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+  }
+  .sep {
+    height: 5em;
+  }
+  .text-justify {
+    text-align: justify;
+  }
+  /***** Inicio Sombras *****/
+  
+  .sombra:focus {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+  span + .sombra:focus {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+  .sombra:focus + span {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+  .sombra:focus ~ span {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+  
+  /***** Fin Sombras *****/
+  
+  /************************/
+  /*   Vendedor Slider    */
+  /************************/
+  .ngx-slider .ngx-slider-bar {
+    background: #a3ff9b !important;
+  }
+  .ngx-slider .ngx-slider-pointer {
+    width: 15px !important;
+    height: 15px !important;
+    top: -5px !important;
+    background-color: #4bc240 !important;
+  }
+  .ngx-slider .ngx-slider-pointer::after {
+    top: 4px !important;
+    left: 4px !important;
+    width: 6px !important;
+    height: 6px !important;
+  }
+  .ngx-slider .ngx-slider-selection {
+    background-color: #4bc240 !important;
+  }
+  .ngx-slider .ngx-slider-pointer.ngx-slider-active::after {
+    background-color: #ff9a03 !important;
+  }
+  .ngx-slider .ngx-slider-bubble {
+    font-size: 0.8em !important;
+  }
+  /***************************/
+  /*  Fin vendedor Slider    */
+  /***************************/
+  
+  .spnTit {
+    font-family: "openSans-ExtraBold";
+  }
+  textarea.sinestilo,
+  select.sinestilo,
+  button.sinestilo,
+  input.sinestilo {
+    border: 1px solid #d8d8d8 !important;
+    background-color: #fff !important;
+  }
+  
+  select.sinestilo:focus,
+  button.sinestilo:focus,
+  textarea.sinestilo:focus,
+  input.sinestilo:focus {
+    border: 1px solid #8c8c8c;
+    background-color: #fff !important;
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
+  button.sinestilo:hover {
+    border: 1px solid #8c8c8c;
+    background-color: #fff;
+  }
+  input[type="checkbox"] {
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    outline: none !important;
+    outline-width: 0 !important;
+  }
+  input[type="checkbox"]:checked {
+    background-color: #ff9900 !important;
+  }
+  input[type="checkbox"]:not(:checked) {
+    background-color: #fff !important;
+  }
+  
+  /***** estilos globales para modal *****/
+  
+  .mdlStyle > mat-dialog-container {
+    color: #f2f2f2 !important;
+    background-color: #0d6efd !important;
+    padding: 0 0 24px 0;
+    overflow-x: hidden;
+  }
+  .mdlTitle {
+    padding: 0 24px 0 24px;
+    display: flex !important;
+    justify-content: center;
+    margin: 0 0 40px auto !important;
+  }
+  .mdlTitle .lblTitle {
+    top: 3px !important;
+    font-size: calc(0.75em + 0.75vw);
+  }
+  .mdlBody {
+    background-color: #fff;
+    color: #121212;
+  }
+  .mat-dialog-content {
+    padding: 10px 25px !important;
+    margin: 0 !important;
+  }
+  .mdlFooter {
+    padding: 10px 24px !important;
+    background-color: #fff;
+    border-top: 1px solid #dee2e6;
+  }
+  .modal-backdrop {
+    z-index: 998 !important;
+  }
+  
+  /******************* DATATABLES *****************/
+  
+  .dataTables_length {
+    margin: 7px 13px;
+  }
+  
+  #tabla-mis-vendedores_length,
+  #tabla-mis-sucursales_length {
+    margin: 0px 13px 10px;
+  }
+  
+  /******************* FIN DATATABLES *****************/
+  
+  @media all and (max-width: 1400px) {
+  }
+  @media all and (max-width: 1200px) {
+  }
+  @media all and (max-width: 992px) {
+  }
+  @media all and (max-width: 768px) {
+  }
+  @media all and (max-width: 576px) {
+  }
+  
+  .btn-shadow-primary {
+    box-shadow: -6px 9px 4px rgba(32, 66, 176, 0.879);
+  }
+  
+  .btn-shadow-light {
+    box-shadow: -6px 9px 4px rgba(147, 147, 147, 0.732);
+  }
+  
+  .btn-shadow-light-m {
+    box-shadow: -6px 5px 4px rgba(147, 147, 147, 0.732);
+  }
+  
+  .btn-shadow-warning {
+    box-shadow: -6px 9px 4px rgba(191, 145, 38, 0.733);
+  }
+  
+  .btn-shadow-danger {
+    box-shadow: -6px 9px 4px rgba(174, 24, 24, 0.859);
+  }
+  
+  .btn-shadow-success {
+    box-shadow: -6px 9px 4px rgba(14, 128, 44, 0.859);
+  }
+  
+  .divLblTit {
+    padding: 0.2em 0;
+    border-radius: 5px;
+    width: 95%;
+    margin-bottom: 50px;
+  }
+  .lblTitulo {
+    color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .custom-shadow-primary {
+    box-shadow: rgba(32, 66, 176, 0.88) -3px 2px 4px 0px;
+  }
+  
+  .custom-shadow-danger {
+    box-shadow: -3px 2px 4px 0px rgba(174, 24, 24, 0.859);
+  }
+  
+  .custom-shadow-warning {
+    box-shadow: -3px 2px 4px rgba(191, 145, 38, 0.733);
+  }
+  
+  .custom-shadow-light {
+    box-shadow: -3px 2px 4px rgba(17, 17, 17, 0.25)
+  }
+  
+  .custom-shadow-success {
+    box-shadow: -3px 2px 4px rgba(14, 128, 44, 0.859);
+  }
+  
+  .btn-tables-text {
+    font-size: 8px;
+    margin: 0 !important;
+  }
+  
+  .bg-primary {
+    background-color: rgba(38,35,164,1) !important;
+  }
+  
+  .btn-primary {
+    background-color: rgba(38,35,164,1);
+    border-color: rgba(38,35,164,1);
+  }
+  
+  .btn-outline-primary{
+    border-color: rgba(38,35,164,1);
+    color:rgba(38,35,164,1); ;
+  }
+  
+  .btn-outline-primary:hover{
+    background-color: rgba(38,35,164,1);
+  }
+  
+  /* Media query para resoluciones menores a 992px (tablet) */
+  @media screen and (max-width: 992px) {
+    #tabla-mis-sucursales_info,
+    #tabla-mis-vendedores_paginate,
+    #tabla-mis-vendedores_info,
+    #tabla-mis-sucursales_paginate {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  /* Media query para resoluciones mayores a 1020px y menores de 1200px*/
+  
+  @media screen and (min-width: 900px) and (max-width: 1200px) {
+    #tabla-mis-sucursales_info,
+    #tabla-mis-vendedores_info {
+      font-size: 12px;
+      padding-top: 14px;
+    }
+  }
+  
+  @media screen and (min-width: 640px) and (max-width: 992px) {
+    #tabla-mis-sucursales_length,
+    #tabla-mis-vendedores_length {
+      position: relative;
+      right: 0 !important;
+      float: right !important;
+    }
+  }
+  
+  /* Media query para resoluciones menores a 768px (mobile)  */
+  @media screen and (max-width: 992px) {
+    .dataTables_filter {
+      padding-bottom: 12px;
+    }
+  }
+  
+  .dt-buttons {
+    padding-bottom: 5px;
+  }
+  
+  .bg-main {
+    background-color: #e5f4f6;
+  }
+  
+  .bg-custom {
+    background-color: #3B8EFF; /* Cambia esto al color que desees */
+  }
+  
+  .cursor-pointer:hover {
+    cursor: pointer;
+    /* background-color: #3EFF3B; */
+    animation-name: bg-change;
+    animation-duration: 200ms;
+  }
+  
+  .selected {
+    background-color: #3EFF3B !important;
+  }
+  
+  @keyframes example {
+    0%  {opacity: 0%;}
+    5%  {opacity: 5%;}
+    10% {opacity: 10%;}
+    15% {opacity: 15%;}
+    20% {opacity: 20%;}
+    25% {opacity: 25%;}
+    30% {opacity: 30%;}
+    35% {opacity: 35%;}
+    40% {opacity: 40%;}
+    45% {opacity: 45%;}
+    50% {opacity: 50%;}
+    55% {opacity: 55%;}
+    60% {opacity: 60%;}
+    65% {opacity: 65%;}
+    70% {opacity: 70%;}
+    75% {opacity: 75%;}
+    80% {opacity: 80%;}
+    85% {opacity: 85%;}
+    90% {opacity: 90%;}
+    95% {opacity: 95%;}
+    100% {opacity: 100%;}
+  }
+  
+  /* The element to apply the animation to */
+  .appear {
+    animation-name: example;
+    animation-duration: 500ms;
+  }
+  
+  .card-bg {
+    background-color: #009cd5;
+  }

@@ -1,0 +1,147 @@
+<ion-content class="ion-padding">
+  <!-- Botón para agregar rol -->
+  <ion-card>
+    <div class="ion-text-center">
+      <ion-button *ngIf="perwrite" expand="block" color="success" (click)="addRol()">
+        Nuevo
+      </ion-button>
+    </div>
+  </ion-card>
+
+  <!-- Título y tabla -->
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>
+        <ion-icon name="settings-outline"></ion-icon>
+        Administración de roles
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div *ngIf="perread">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <table>
+                <ion-header>
+                  <ion-row>
+                    <ion-col>Fecha</ion-col>
+                    <ion-col>Activo</ion-col>
+                    <ion-col>Nombre</ion-col>
+                    <ion-col>Acceso</ion-col>
+                    <ion-col>Acciones</ion-col>
+                  </ion-row>
+                </ion-header>
+                <ion-content>
+                  <ion-row *ngFor="let rol of allRol">
+                    <ion-col>{{ rol.ROL_CA | date: 'dd-MM-yyyy hh:mma' }}</ion-col>
+                    <ion-col>
+                      <ion-checkbox [checked]="rol.ROL_ACTIVE == 1" disabled></ion-checkbox>
+                    </ion-col>
+                    <ion-col>
+                      {{ rol.ROL_NAME }}
+                      <sup *ngIf="this.proname == 'Administrator'">({{ rol.COM_NAME }})</sup>
+                    </ion-col>
+                    <ion-col>{{ rol.ROL_ACCESS }}</ion-col>
+                    <ion-col>
+                      <ion-button
+                        *ngIf="perwrite"
+                        color="primary"
+                        (click)="editperm(rol.ROL_ID, rol.ROL_ACTIVE, rol.ROL_NAME, rol.ROL_ACCESS)"
+                      >
+                        <ion-icon slot="start" name="pencil-outline"></ion-icon>
+                        Editar
+                      </ion-button>
+                      <ion-button
+                        *ngIf="peradm"
+                        color="danger"
+                        (click)="deleteperm(rol.ROL_ID, rol.ROL_NAME)"
+                      >
+                        <ion-icon slot="start" name="trash-outline"></ion-icon>
+                        Eliminar
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-content>
+              </table>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Modales -->
+  <ion-modal [isOpen]="showAddModal">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Agregar Rol</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input id="inpAddNombreR" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Acceso</ion-label>
+        <ion-input id="inpAddAccesoR" placeholder="Acceso"></ion-input>
+      </ion-item>
+      <ion-footer>
+        <ion-button expand="full" color="secondary" (click)="closeAddModal()">
+          Cerrar
+        </ion-button>
+        <ion-button expand="full" color="primary" (click)="requestAdd()">
+          Guardar
+        </ion-button>
+      </ion-footer>
+    </ion-content>
+  </ion-modal>
+
+  <ion-modal [isOpen]="showEditModal">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Editar Rol</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input id="inpEdNombreR" [value]="this.oldnamep" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Acceso</ion-label>
+        <ion-input id="inpEdAccesoR" [value]="this.oldaccessp" placeholder="Acceso"></ion-input>
+      </ion-item>
+      <ion-footer>
+        <ion-button expand="full" color="secondary" (click)="closeEditModal()">
+          Cerrar
+        </ion-button>
+        <ion-button expand="full" color="primary" (click)="requestUpdate(fpupd)">
+          Actualizar
+        </ion-button>
+      </ion-footer>
+    </ion-content>
+  </ion-modal>
+
+  <ion-modal [isOpen]="showDeleteModal">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Eliminar Rol</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-text>
+        <p>¿Está seguro de eliminar el rol <strong>{{ this.fpnam }}</strong>?</p>
+      </ion-text>
+      <ion-footer>
+        <ion-button expand="full" color="secondary" (click)="closeDeleteModal()">
+          Cerrar
+        </ion-button>
+        <ion-button expand="full" color="danger" (click)="requestDelete(fpdel)">
+          Eliminar
+        </ion-button>
+      </ion-footer>
+    </ion-content>
+  </ion-modal>
+</ion-content>
