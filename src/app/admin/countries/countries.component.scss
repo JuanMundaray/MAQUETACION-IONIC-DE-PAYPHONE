@@ -1,0 +1,9 @@
+ion-modal{
+  --background:white;
+  --padding: 40px!important;
+
+}
+
+ion-modal::before{
+  height: auto;
+}

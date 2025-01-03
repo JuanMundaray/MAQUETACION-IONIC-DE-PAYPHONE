@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AlertMessageService } from 'src/app/services/alert/alert-message.service';
 import { FunctionsService } from 'src/app/services/functions/functions.service';
@@ -15,9 +15,9 @@ declare var $: any;
   standalone:false
 })
 export class RolesComponent  implements OnInit {
-  perwrite: boolean = true;
-  perread: boolean = true;
-  peradm: boolean = true;
+  @Input() perwrite: boolean = true;
+  @Input() perread: boolean = true;
+  @Input() peradm: boolean = true;
   dtOptions: any = {};
   dtTrigger: Subject<any> = new Subject<any>();
   allRol: any = [];
@@ -136,7 +136,7 @@ export class RolesComponent  implements OnInit {
 
   addRol() {
     //$('#mdladdRol').modal('show');
-    this.showAddModal = false;
+    this.showAddModal = true;
   }
 
   requestAdd() {

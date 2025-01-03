@@ -1,0 +1,152 @@
+<div class="ion-padding">
+  <div class=" bg-white">
+
+    <ion-grid class="text-black">
+      <!-- Componente de filtrado -->
+      <ion-row class="ion-padding-top">
+        <ion-col size="12" size-md="4">
+          <ion-label>Buscar Usuario:</ion-label>
+          <ion-input
+            fill="outline"
+            color="blue"
+            [(ngModel)]="filterText"
+            (ionInput)="filtrarUsuarios(filterText)"
+            placeholder="Nombre o teléfono del usuario"
+            clear-input
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="ion-margin-top">
+        <!-- Usuarios -->
+        <ion-col size-sm="12" size-md="6">
+          <ion-title class="ion-text-center"><strong>Usuarios:</strong></ion-title>
+          <ion-card
+            *ngFor="let user of paginatedUsers"
+            (click)="selectuser(user.id_usuario)"
+          >
+            <ion-card-header
+              (click)="toggleDesplegable(user.id_usuario)"
+              [class.card-selected]="user.isSelected"
+            >
+              <ion-card-title>{{ capitalizeName(user.usuario) }}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content
+              id="desplegar{{ user.id_usuario }}"
+              (ionDrag)="onDragOver($event)"
+              (ionDrop)="onDrop($event, user)"
+            >
+              <ion-row id="arearol{{ user.id_usuario }}">
+                <ion-card
+                  *ngFor="let rolespre of user.roles"
+                  class="ion-text-center"
+                >
+                  <ion-card-header class="ion-justify-content-between">
+                    <p>
+                      {{ rolespre.name }}&nbsp;<sup
+                        title="Compañia"
+                        class="text-muted fw-bold"
+                        >({{ rolespre.company }})</sup
+                      >
+                    </p>
+                    <ion-icon
+                      name="close-circle"
+                      title="Eliminar"
+                      (click)="deleterol(rolespre.id, user)"
+                    ></ion-icon>
+                  </ion-card-header>
+                </ion-card>
+              </ion-row>
+  
+              <ion-row *ngIf="user.roles.length > 0" class="ion-justify-content-end">
+                <ion-button
+                  id="desplegarSave{{ user.id_usuario }}"
+                  fill="outline"
+                  size="small"
+                  (click)="saveUserRol(user.id_usuario)"
+                >
+                  <ion-icon slot="start" name="cloud-upload"></ion-icon>
+                  Guardar cambios
+                </ion-button>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+  
+          <!-- Paginación -->
+          <ion-row class="ion-text-center ion-padding">
+            <ion-col>
+              <p class="mb-3">Página {{ currentPage }} de {{ totalPages }}</p>
+              <ion-button
+                size="small"
+                (click)="previousPage()"
+                [disabled]="currentPage === 1"
+              >
+                &lt;- Anterior
+              </ion-button>
+              <ion-button
+               class="ms-3"
+                size="small"
+                (click)="nextPage()"
+                [disabled]="currentPage === totalPages"
+              >
+                Siguiente -&gt;
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+  
+        <!-- Roles -->
+        <ion-col size-sm="12" size-md="6">
+          <ion-title class="ion-text-center"><strong>Roles:</strong></ion-title>
+          <ion-card
+            *ngFor="let role of roles"
+            draggable="true"
+            (ionDragStart)="onDragStart($event, role.ROL_ID, role.ROL_NAME, role.COM_NAME)"
+          >
+            <ion-card-content class="ion-justify-content-between">
+              <strong>
+                {{ role.ROL_NAME }}&nbsp;<sup
+                  title="Compañia"
+                  class="text-muted"
+                  >({{ role.COM_NAME }})</sup
+                >
+              </strong>
+              <p
+                (click)="getPermissionsPerRole(role.ROL_ID)"
+                class="ion-text-end"
+                data-bs-toggle="modal"
+                data-bs-target="#myModal"
+              >
+                Ver permisos
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    <!-- Modal -->
+    <ion-modal id="myModal" [isOpen]="showModalPermisosRolUsuario">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Rol: {{ rol_name }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="dismissModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <div>
+        <p class="ion-text-primary">
+          Estos son los permisos actuales para este rol:
+        </p>
+        <ion-list>
+          <ion-item *ngFor="let rol of permisos; let i = index">
+            <ion-label>{{ i + 1 }}°</ion-label>
+            <ion-label>{{ rol }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-modal>
+  </div>
+</div>

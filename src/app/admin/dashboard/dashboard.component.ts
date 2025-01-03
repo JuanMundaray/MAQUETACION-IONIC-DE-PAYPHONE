@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { Router, RouteReuseStrategy } from '@angular/router';
 import { buttonsConfig } from '../utils/optionConfig';
 import { FunctionsService } from 'src/app/services/functions/functions.service';
 import { AlertMessageService } from 'src/app/services/alert/alert-message.service';
 import { Option } from '../utils/configAdmin';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,11 +44,15 @@ export class DashboardComponent  implements OnInit {
   public optionMenu = buttonsConfig;
   currentView!: string;
 
-  constructor(public router: Router, private mensaje: AlertMessageService) { }
+  constructor(public router: Router, private func: FunctionsService,  private mensaje: AlertMessageService) { }
 
-  ngOnInit() {}
-  //funciones agregadas:
-  // view
+  ngOnInit(): void {
+    this.permission = JSON.parse(this.func.readLocalStorage('data_userPermissions'));
+  }
+
+  valPerm(perm:any){
+    return this.func.hasAccess(perm, this.permission)
+  }
 
 
   //esta función verifica los permisos del usuario, si los tiene muestra el modulo al que quiere ingresar
@@ -51,12 +61,13 @@ export class DashboardComponent  implements OnInit {
     this.ppal = false;
     this.opc = true;
     this.currentView = nombOpc;
-    console.log(this.currentView)
-    console.log(haccess)
-    if (haccess) {
-      this.perwrite = haccess.PER_WRITE == 1 ? true : false;
-      this.perread = haccess.PER_READ == 1 ? true : false;
-      this.peradm = haccess.PER_ADMINISTRAR == 1 ? true : false;
+    console.log(this.currentView);
+    console.log(haccess);
+    if (true) { 
+      // aqui va en realidad haccess
+      // this.perwrite = haccess.PER_WRITE == 1 ? true : false;
+      // this.perread = haccess.PER_READ == 1 ? true : false;
+      // this.peradm = haccess.PER_ADMINISTRAR == 1 ? true : false;
   
       const optionMap = {
         [Option.Permisos]: () => {
@@ -151,4 +162,24 @@ export class DashboardComponent  implements OnInit {
     this.financiamiento = false;
   }
 
+}
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+  ],
+  providers: [
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
+    }
+  ],
+  bootstrap: [AppComponent],
+})
+export class AppModule {
 }

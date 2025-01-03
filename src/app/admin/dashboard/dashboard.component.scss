@@ -16,11 +16,6 @@
   font-size: 2.5rem;
 }
 
-
-.subtitle{
-  background:url('../../assets/images/login/frame-6-1@2x.png'); border: 5px solid rgb(174, 4, 4);
-}
-
 ion-button.botonC {
   --background: #ffffff;
   box-shadow: 2px 5px 15px rgba(5, 41, 108, 0.732);
@@ -30,6 +25,10 @@ ion-button.botonC {
   color: #666666;
 }
 
+
+.no-line ion-col{
+  border: none; /* Asegúrate de que las columnas no tengan bordes */
+}
 
 @media screen and (max-width: 1360px) {
   .container {

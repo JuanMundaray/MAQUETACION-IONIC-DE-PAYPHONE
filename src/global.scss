@@ -64,6 +64,66 @@
     background-repeat: no-repeat;
     background-size: 100% auto;
   }
+
+
+  ion-content{
+    --background:#e5f3f6;
+  }
+
+  
+  /* Estilo para el contenedor de la tabla */
+.ionic-grid {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #dee2e6;
+}
+
+/* Estilo de la cabecera de la tabla */
+.table-header {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Estilo de las filas alternas (table-striped) */
+.table-row:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Estilo para el hover en filas */
+.table-row:hover {
+  background-color: #e9ecef;
+}
+
+.table-header{
+  font-weight: bold;
+  color: black;
+}
+  /* Estilo de las celdas de la tabla */
+  ion-col {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  /* Estilo de los botones dentro de la tabla */
+  .ionic-grid ion-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    margin-right: 5px;
+  }
+
+  /* Alineación de las acciones */
+  ion-col:last-child {
+    display: flex;
+    justify-content: center;
+  }
+
+  // fin de estilos para las tablas con ion-grid
+  
   .pointer {
     cursor: pointer;
   }
@@ -429,4 +489,23 @@
   
   .card-bg {
     background-color: #009cd5;
+  }
+
+  .subtitle{
+    background-color: #121212;
+    font-weight: bold;
+    color: #fff;
+    background-image: url("./app/assets/images/banner-16@2x.png");
+    font-weight: bold;
+  }
+  .subtitle{
+    background-color: #121212;
+    font-weight: bold;
+    background-image: url("./app/assets/images/banner-16@2x.png");
+    font-weight: bold;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .subtitle ion-card-title{
+    color: #fff;
   }

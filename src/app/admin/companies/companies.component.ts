@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit,Input } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { AlertMessageService } from 'src/app/services/alert/alert-message.service';
@@ -17,9 +17,9 @@ declare var $: any;
 })
 
 export class CompaniesComponent  implements OnInit {
-  perwrite!: boolean;
-  perread!: boolean;
-  peradm!: boolean;
+  @Input() perwrite!: boolean;
+  @Input() perread!: boolean;
+  @Input() peradm!: boolean;
   allPais: any = [];
 
   dtOptions: any = {};
@@ -154,7 +154,7 @@ export class CompaniesComponent  implements OnInit {
   addEmpresas() {
     this.isActiveConfigGlobal = true;
     this.getCountries('');
-    $('#mdlAddEmpresas').modal('show');
+    this.showAddModal=true;
   }
 
   requestAdd() {

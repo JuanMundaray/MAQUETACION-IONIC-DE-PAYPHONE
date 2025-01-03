@@ -1,0 +1,78 @@
+.card {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+.card-body {
+padding: 10px;
+display: none;
+}
+
+.card:active {
+opacity: 0.5;
+}
+
+.card-selected {
+background-color: #4b97de;
+color: white;
+}
+
+.bi-x-octagon-fill {
+font-size: 20px;
+}
+
+.dropzone {
+border: 2px dashed rgb(15, 170, 92);
+background-color: rgb(173, 230, 215);
+}
+.container {
+background-color: #ffffff;
+border: solid;
+border-width: 1px;
+border-color: rgb(223, 222, 221);
+}
+
+.get_perms_btn {
+border-bottom: 2px solid transparent;
+transition: all 0.25s ease;
+color: #ff9d00;
+cursor: pointer;
+}
+
+.get_perms_btn:hover {
+border-color: #ff9d00;
+}
+
+i {
+transition: all 0.2s ease;
+}
+
+i:active {
+font-size: 18px;
+}
+
+.save_roles_btn {
+float: right;
+margin-right: 16px;
+width: min-content;
+}
+
+.save-changes-text {
+height: min-content;
+font-size: 8px;
+padding-top: 4px;
+}
+
+.modal-title {
+color: #ff9d00;
+}
+
+.bi-cloud-arrow-up-fill {
+font-size: 1.3rem;
+vertical-align: middle;
+}
+
+sup {
+font-size: 8px;
+letter-spacing: 1.05px;
+}

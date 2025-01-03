@@ -1,2 +1,34 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+:root {
+    --ion-color-primary: #0d6efd;
+    --ion-color-primary-dark: #2600ff;
+    --ion-color-medium: #8b8b8b;
+  }
+  
+
+    ion-button .text-button-white{
+        color: white;
+    }
+
+    ion-modal {
+        --border-radius: 10px;
+        --height: auto;
+    }
+
+    ion-toolbar{
+        --background: #ffffff;
+    }
+
+    ion-title{
+        color: #ffffff;
+        text-align: center;
+    }
+    ion-item{
+        --background: #ffffff;
+    }
+
+    ion-input{
+        border: solid 1px gray;
+        border-radius: 6px;
+    }

@@ -1,16 +1,15 @@
-<ion-content class="p-5">
-
+<ion-content class="p-5 ion-padding">
   <ion-card class="mt-2">
     <ion-card-header class="text-center border-0 subtitle">
       <ion-card-title class="text-white" style="font-weight: bold;">Administración de Usuarios</ion-card-title>
     </ion-card-header>
     <ion-card-content class="bg-light">
-      <ion-row class="mb-4">
+      <ion-row class="mb-4  no-line">
         <ng-container class="bg-light" *ngFor="let button of optionMenu">
           <ng-container >
-            <ion-col size="6" size-md="3" class="d-grid justify-content-center mt-5 d-flex">
+            <ion-col size="6" size-md="3" class="d-flex ion-justify-content-center mt-5">
               <ion-button expand="full" class="botonC" (click)="view(button.optionSelect, permission)">
-                <div class="d-flex flex-column align-items-center">
+                <div class="d-flex flex-column ion-align-items-center">
                   <ion-icon class="bi {{ button.icon }} iconXl mb-3"></ion-icon>
                   <strong>{{ button.label }}</strong>
                 </div>
@@ -27,11 +26,11 @@
       <ion-card-title class="text-white" style="font-weight: bold;">Configuraciones</ion-card-title>
     </ion-card-header>
     <ion-card-content class="bg-white">
-      <ion-row  size="6" size-md="3" class="d-flex pt-5 pb-5 justify-content-around">
+      <ion-row  size="6" size-md="3" class="d-flex pt-5 pb-5 ion-justify-content-around  no-line">
         <div>
           <ion-col class="mt-5">
             <ion-button expand="full" class="btn-outline-secondary botonC" (click)="view(OptionesSelect.Permisos, permission)">
-              <div class="d-flex flex-column align-items-center">
+              <div class="d-flex flex-column ion-align-items-center">
                 <ion-icon class="bi bi-key iconXl mb-4"></ion-icon>
                 <strong>Permisos</strong>
               </div>
@@ -40,9 +39,9 @@
         </div>
 
         <div >
-          <ion-col class=" mt-5">
+          <ion-col class="mt-5">
             <ion-button expand="full" class="btn-outline-secondary botonC" (click)="view(OptionesSelect.PermisosRoles, permission)">
-              <div class="d-flex flex-column align-items-center">
+              <div class="d-flex flex-column ion-align-items-center">
                 <ion-icon class="bi bi-shield-lock iconXl mb-4"></ion-icon>
                 <strong>Permisos Roles</strong>
               </div>
@@ -64,7 +63,7 @@
         <div>
           <ion-col class="mt-5">
             <ion-button expand="full" class="btn-outline-secondary botonC" (click)="view(OptionesSelect.Financiamiento, permission)">
-            <div class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column ion-align-items-center">
               <ion-icon class="bi bi-calendar iconXl mb-4"></ion-icon>
               <strong>Semanas</strong>
             </div>
@@ -74,17 +73,35 @@
       </ion-row>
     </ion-card-content>
   </ion-card>
-</ion-content>
+  
+  <div [ngSwitch]="currentView" class="mb-5">
+    
+    <div class="container mb-5" *ngIf="opc">
+      <div>
+        <div class="row mt-3 d-flex justify-content-between">
+          <div class="col-2"></div>
+          <div class="col-8 d-flex justify-content-center align-items-center">
+            <span class="titulo text-black ion-text-bold">{{ titulo }}</span>
+          </div>
+          <div class="col-2 d-grid mb-3">
+            <button type="button" class="btn btn-secondary btn-md botonback" (click)="back()">
+              <i class="bi bi-arrow-90deg-left" style="font-size: 1.2rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!--Componentes dentro del Dashboard-->
+      <app-countries *ngSwitchCase="'countries'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm"></app-countries>
+      <app-companies  *ngSwitchCase="'companies'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm"></app-companies>
+      <app-users-roles  *ngSwitchCase="'usuarios-roles'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm"></app-users-roles>
+      <!-- <app-users-admins></app-users-admins> -->
+      <app-permisos *ngSwitchCase="'permisos'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm"></app-permisos>
+      <app-delete-session-user *ngSwitchCase="'sesiones'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm"></app-delete-session-user>
+       <app-permisos-roles *ngSwitchCase="'permisos-roles'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm"></app-permisos-roles>
+       <app-roles *ngSwitchCase="'roles'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm"></app-roles>
+    </div>
 
-  <div>
-    <!-- <app-permisos></app-permisos> -->
-    <!-- <app-roles></app-roles> -->
-    <!-- <app-permisos-roles *ngSwitchCase="'permisos-roles'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm" [permission]="permission"></app-permisos-roles> -->
-    <!-- <app-users-roles *ngSwitchCase="'usuarios-roles'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm" [permission]="permission"></app-users-roles> -->
-    <!-- <app-companies></app-companies> -->
-    <!--<app-users-admins *ngSwitchCase="'admins'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm" [permission]="permission"></app-users-admins>-->
-    <!-- <app-countries></app-countries> -->
-    <!-- <app-delete-session-user *ngSwitchCase="'sesiones'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm" [permission]="permission"></app-delete-session-user>
-    <app-financiamiento *ngSwitchCase="'financiamiento'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm" [permission]="permission"></app-financiamiento>
-    <app-branches *ngSwitchCase="'sucursales'" [perwrite]="perwrite" [perread]="perread" [peradm]="peradm" [permission]="permission"></app-branches> -->
   </div>
+
+</ion-content>

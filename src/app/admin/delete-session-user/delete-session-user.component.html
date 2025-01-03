@@ -1,0 +1,71 @@
+<div class="ion-padding">
+  <!-- Contenedor Principal -->
+  <ion-grid class="ion-margin-top">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-sm="9" size-xl="12">
+        <!-- Tabla de Usuarios -->
+        <ion-card>
+          <ion-card-content class="bg-white">
+            <ion-grid class="table">
+              <ion-row>
+                <ion-col size="12">
+                  <ion-grid class="table-content ion-table-striped">
+                    <!-- Encabezado de la Tabla -->
+                    <ion-row class="ion-text-center ion-padding">
+                      <ion-col><strong>USUARIO</strong></ion-col>
+                      <ion-col><strong>NOMBRE</strong></ion-col>
+                      <ion-col><strong>GPS</strong></ion-col>
+                      <ion-col><strong>IP</strong></ion-col>
+                      <ion-col><strong>ACCIÓN</strong></ion-col>
+                    </ion-row>
+
+                    <!-- Filas de Datos -->
+                    <ion-row *ngFor="let data of this.dataResponse; let i = index" class="ion-align-items-center p-2">
+                      
+                      <ion-col class="ion-text-center">
+                        {{ data.USE_SES_USER }}
+                      </ion-col>
+                      
+                      <ion-col class="ion-text-center">
+                        {{ data.USE_NAME }}
+                      </ion-col>
+                      
+                      <ion-col class="ion-text-center">
+                        <ion-button
+                          fill="outline"
+                          size="small"
+                          href="https://maps.google.com/?q={{data.USE_SES_GPS}}"
+                          target="_blank"
+                          title="Obtener localización"
+                        >
+                          <ion-icon slot="start" name="location-outline"></ion-icon>
+                          <ion-label>Localización</ion-label>
+                        </ion-button>
+                      </ion-col>
+                      
+                      <ion-col class="ion-text-center">
+                        {{ data.USE_SES_IP }}
+                      </ion-col>
+                      
+                      <ion-col class="ion-text-center custom-button">
+                        <ion-button
+                          color="primary"
+                          size="small"
+                          (click)="endSession(i, data.USE_SES_USE_ID, data.USE_SES_USER)"
+                        >
+                          <ion-icon slot="start" class="pe-2" name="close-circle"></ion-icon>
+                          <ion-label>Cerrar Sesión</ion-label>
+                          
+                        </ion-button>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

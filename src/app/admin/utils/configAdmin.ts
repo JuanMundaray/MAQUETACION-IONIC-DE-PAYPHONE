@@ -8,7 +8,7 @@ export enum Option {
     UsuariosAsesor = 'usuarios-asesor',
     Companies = 'companies',
     Admins = 'admins',
-    Contries = 'contries',
+    Contries = 'countries',
     Sesiones = 'sesiones',
     Financiamiento = 'financiamiento',
     Sucursales = 'sucursales'

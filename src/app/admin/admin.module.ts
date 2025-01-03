@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule, IonModal } from '@ionic/angular';
 
@@ -13,6 +13,10 @@ import { CompaniesComponent } from './companies/companies.component';
 // import { CountriesComponent } from './countries/countries.component';
 import { RolesComponent } from './roles/roles.component';
 import { UsersAdminsComponent } from './users-admins/users-admins.component';
+import { CountriesComponent } from './countries/countries.component';
+import { DeleteSessionUserComponent } from './delete-session-user/delete-session-user.component';
+import { PermisosRolesComponent } from './permisos-roles/permisos-roles.component';
+import { UsersRolesComponent } from './users-roles/users-roles.component';
 import * as jQuery from 'jquery';
 
 @NgModule({
@@ -20,16 +24,19 @@ import * as jQuery from 'jquery';
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminPageRoutingModule,
+    AdminPageRoutingModule
   ],
   declarations: [
     AdminPage,
     DashboardComponent,
     CompaniesComponent,
-    //CountriesComponent,
+    CountriesComponent,
     PermisosComponent,
     RolesComponent,
-    UsersAdminsComponent
+    UsersAdminsComponent,
+    DeleteSessionUserComponent,
+    PermisosRolesComponent,
+    UsersRolesComponent
   ],
   exports:[
     IonicModule,

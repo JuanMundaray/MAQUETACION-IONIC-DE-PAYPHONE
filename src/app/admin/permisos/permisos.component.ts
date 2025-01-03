@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AlertMessageService } from 'src/app/services/alert/alert-message.service';
 import { FunctionsService } from 'src/app/services/functions/functions.service';
@@ -13,9 +13,9 @@ import { SpinnerService } from 'src/app/services/spinner/spinner.service';
   standalone:false
 })
 export class PermisosComponent  implements OnInit {
-  perwrite: boolean = true;
-  perread: boolean= true;
-  peradm: boolean=true;
+  @Input() perwrite: boolean = true;
+  @Input() perread: boolean = true;
+  @Input() peradm: boolean = true;
 
 
   // Variables para manejar los modales

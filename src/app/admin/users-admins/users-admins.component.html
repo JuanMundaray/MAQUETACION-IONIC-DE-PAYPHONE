@@ -1,10 +1,11 @@
+
 <ion-header>
   <ion-toolbar>
     <ion-title>Administración de Usuarios</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<div>
   <!-- Botón Nuevo -->
   <div class="d-flex justify-content-center mt-4">
     <ion-button *ngIf="perwrite" (click)="openMdl()" expand="block" color="success">
@@ -81,7 +82,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
+  <div>
     <div class="ion-padding">
       <form>
         <ion-grid>
@@ -226,7 +227,7 @@
         </ion-grid>
       </form>
     </div>
-  </ion-content>
+  </div>
 
   <ion-footer>
     <ion-toolbar>
@@ -244,4 +245,4 @@
   </ion-footer>
 </ion-modal>
 
-</ion-content>
+</div>
