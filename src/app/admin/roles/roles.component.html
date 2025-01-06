@@ -76,19 +76,19 @@
         </ion-toolbar>
       </ion-header>
       <div>
-        <ion-item>
-          <ion-label position="stacked">Nombre</ion-label>
-          <ion-input id="inpAddNombreR" placeholder="Nombre"></ion-input>
+        <ion-item lines="none">
+          <ion-label class="text-black mb-3" position="stacked">Nombre</ion-label>
+          <ion-input class="padding-input" id="inpAddNombreR" placeholder="Nombre"></ion-input>
         </ion-item>
-        <ion-item>
-          <ion-label position="stacked">Acceso</ion-label>
-          <ion-input id="inpAddAccesoR" placeholder="Acceso"></ion-input>
+        <ion-item lines="none">
+          <ion-label class="text-black mb-3" position="stacked">Acceso</ion-label>
+          <ion-input class="padding-input" id="inpAddAccesoR" placeholder="Acceso"></ion-input>
         </ion-item>
-        <ion-footer>
-          <ion-button expand="full" color="secondary" (click)="closeAddModal()">
+        <ion-footer class="mt-3 pb-3 d-flex justify-content-end pe-2">
+          <ion-button class="me-2" color="secondary" fill="outline" (click)="closeAddModal()">
             Cerrar
           </ion-button>
-          <ion-button expand="full" color="primary" (click)="requestAdd()">
+          <ion-button color="primary" fill="outline" (click)="requestAdd()">
             Guardar
           </ion-button>
         </ion-footer>

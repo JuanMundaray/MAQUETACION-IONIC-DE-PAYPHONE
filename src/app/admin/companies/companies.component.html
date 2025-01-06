@@ -2,12 +2,7 @@
   <div class="bg-light rounded pt-4">
     <!-- Botón Nuevo -->
     <div class="d-flex justify-content-center ion-padding">
-        <ion-button
-          expand="block"
-          fill="outline"
-          color="success"
-          (click)="addEmpresas()"
-        >
+        <ion-button expand="block" fill="outline" color="success" (click)="addEmpresas()">
           Nuevo
         </ion-button>
     </div>
@@ -67,6 +62,7 @@
       <!-- Modal Crear Empresa -->
       <ion-modal [isOpen]="showAddModal">
         <ng-template>
+
           <ion-header>
             <ion-toolbar color="primary">
               <ion-title>Agregar Empresa</ion-title>
@@ -75,27 +71,33 @@
               </ion-buttons>
             </ion-toolbar>
           </ion-header>
+
           <div>
-            <ion-item>
-              <ion-label position="stacked">Nombre</ion-label>
-              <ion-input [(ngModel)]="newEmpresaName" placeholder="Nombre"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="stacked">País</ion-label>
-              <ion-select [(ngModel)]="selectedCountry">
-                <ion-select-option *ngFor="let country of allPais" [value]="country.COU_ID">
-                  {{ country.COU_NAME }}
-                </ion-select-option>
-              </ion-select>
-            </ion-item>
-            <ion-footer>
+            <div class="p-2">
+              <ion-item lines="none">
+                <ion-label position="stacked" class="mb-2">Nombre</ion-label>
+                <ion-input class="text-black" [(ngModel)]="newEmpresaName" placeholder="Nombre"></ion-input>
+              </ion-item>
+  
+              <ion-item lines="none">
+                <ion-label position="stacked" class="mb-2">País</ion-label>
+                <ion-select class="text-black" [(ngModel)]="selectedCountry">
+                  <ion-select-option class="text-black" *ngFor="let country of allPais" [value]="country.COU_ID">
+                    {{ country.COU_NAME }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </div>
+
+            <ion-footer class="pe-3">
               <ion-toolbar>
                 <ion-buttons slot="end">
-                  <ion-button (click)="requestAdd()">Guardar</ion-button>
+                  <ion-button color="primary" fill="outline" (click)="requestAdd()">Guardar</ion-button>
                 </ion-buttons>
               </ion-toolbar>
             </ion-footer>
           </div>
+          
         </ng-template>
       </ion-modal>
 
@@ -123,6 +125,7 @@
               </ion-select-option>
             </ion-select>
           </ion-item>
+
           <!-- Activar/Desactivar STX -->
           <ion-item>
             <ion-label>Desactivar STX</ion-label>

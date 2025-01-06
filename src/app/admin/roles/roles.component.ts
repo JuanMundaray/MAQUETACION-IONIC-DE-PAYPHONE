@@ -5,7 +5,7 @@ import { FunctionsService } from 'src/app/services/functions/functions.service';
 import { environment } from 'src/environments/environment';
 import { HttpServiceService } from 'src/app/services/httpServices/http-service.service';
 import { SpinnerService } from 'src/app/services/spinner/spinner.service';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 declare var $: any;
 
 @Component({
@@ -42,6 +42,7 @@ export class RolesComponent  implements OnInit {
     private spinner: SpinnerService,
     public func: FunctionsService,
     private httpServ: HttpServiceService,
+    private modalController:ModalController
   ) { }
 
   ngOnInit(): void {
@@ -135,7 +136,6 @@ export class RolesComponent  implements OnInit {
   }
 
   addRol() {
-    //$('#mdladdRol').modal('show');
     this.showAddModal = true;
   }
 

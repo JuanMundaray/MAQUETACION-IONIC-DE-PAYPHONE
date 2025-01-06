@@ -23,7 +23,7 @@
     </ion-card>
 
     <!-- Tabla de Permisos -->
-        <ion-card *ngIf="perread" class="ion-padding">
+        <ion-card class="ion-padding">
           <ion-grid>
             <ion-row class="table-header">
               <ion-col>Fecha Creado</ion-col>
@@ -71,18 +71,18 @@
       </ion-toolbar>
     </ion-header>
     <div class="modal-content">
-      <ion-list>
-        <ion-item>
-          <ion-label position="floating">Nombre</ion-label>
-          <ion-input [(ngModel)]="newPermission.name"></ion-input>
+      <ion-list class="bg-white">
+        <ion-item lines="none">
+          <ion-label class="text-black mb-3" position="stacked">Nombre</ion-label>
+          <ion-input class="padding-input" placeholder="Nombre" [(ngModel)]="newPermission.name"></ion-input>
         </ion-item>
-        <ion-item>
-          <ion-label position="floating">Acceso</ion-label>
-          <ion-input [(ngModel)]="newPermission.access"></ion-input>
+        <ion-item lines="none">
+          <ion-label class="text-black mb-3" position="stacked">Acceso</ion-label>
+          <ion-input class="padding-input" placeholder="Acceso" [(ngModel)]="newPermission.access"></ion-input>
         </ion-item>
       </ion-list>
-      <ion-footer>
-        <ion-button expand="block" (click)="requestAdd()">Guardar</ion-button>
+      <ion-footer class="d-flex justify-content-end">
+        <ion-button class="m-4" color="primary" fill="outline" (click)="requestAdd()">Guardar</ion-button>
       </ion-footer>
     </div>
   </ng-template>
@@ -108,7 +108,7 @@
           <ion-row>
             <ion-col size="12">
               <ion-item>
-                <ion-label position="floating">Nombre <span class="aster">*</span></ion-label>
+                <ion-label position="stacked">Nombre <span class="aster">*</span></ion-label>
                 <ion-input [(ngModel)]="editPermission.name" placeholder="Ingrese el nuevo nombre"></ion-input>
               </ion-item>
             </ion-col>

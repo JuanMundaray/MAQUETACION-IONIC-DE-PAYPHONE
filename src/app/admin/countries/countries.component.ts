@@ -149,8 +149,6 @@ export class CountriesComponent  implements OnInit {
       } 
       
       else {
-        this.mensaje.success('Bien', "Datos Correctos");
-        console.log("hola");
         this.spinner.show(); //inicio de la animacion, va al inicio del metodo
         var type = 'savePais';
         var fpname = this.func.crypt(pname, type);

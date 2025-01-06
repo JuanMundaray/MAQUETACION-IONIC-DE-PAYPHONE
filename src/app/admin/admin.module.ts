@@ -24,7 +24,9 @@ import * as jQuery from 'jquery';
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminPageRoutingModule
+    AdminPageRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AdminPage,

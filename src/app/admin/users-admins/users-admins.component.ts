@@ -89,6 +89,8 @@ export class UsersAdminsComponent implements OnInit {
     'pt-5',
   ];
 
+  public isModalOpen:boolean=false;
+
   constructor(
     private func: FunctionsService,
     public router: Router,

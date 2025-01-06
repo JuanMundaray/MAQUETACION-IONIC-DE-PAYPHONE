@@ -8,11 +8,6 @@ header{
  .width{
     width: 35%;
  }
-
- .table-content ion-row{
-   border-top: solid 1px rgb(238, 238, 238);
- }
-
  .ion-table-striped ion-row:nth-child(n+2):nth-child(odd) {
    background-color: #f8f9fa; /* Color de fondo para filas impares */
  }

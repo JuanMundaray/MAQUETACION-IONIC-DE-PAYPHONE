@@ -1,9 +1,18 @@
-ion-modal{
-  --background:white;
-  --padding: 40px!important;
 
-}
 
 ion-modal::before{
   height: auto;
+}
+ion-item ion-label{
+  font-size: large;
+  font-weight: bold;
+  color: black;
+}
+
+//Campos de Input
+ion-input{
+  --padding-start: 12px; /* Padding a la izquierda */
+  --padding-end: 12px;   /* Padding a la derecha */
+  --padding-top: 8px;    /* Padding arriba */
+  --padding-bottom: 8px; /* Padding abajo */
 }

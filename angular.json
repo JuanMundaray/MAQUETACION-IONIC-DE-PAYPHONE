@@ -47,11 +47,7 @@
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "node_modules/sweetalert2/dist/sweetalert2.all.min.js",
               "node_modules/boxicons/dist/boxicons.js",
-              "node_modules/datatables.net-buttons/js/dataTables.buttons.js",
-              "node_modules/jszip/dist/jszip.min.js",
-              "node_modules/datatables.net-buttons/js/buttons.html5.js",
-              "node_modules/datatables.net-buttons/js/buttons.print.js",
-              "node_modules/datatables.net-buttons/js/buttons.colVis.js"
+              "node_modules/jszip/dist/jszip.min.js"
             ]
           },
           "configurations": {

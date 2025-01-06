@@ -18,7 +18,7 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent  implements OnInit {
-  public ppal: boolean = true;
+  public ppal: boolean = true; //Esta Variable controla si se oculta o se muestra el dashboard 
   public addSocio: boolean = false;
   public regUserBo: boolean = false;
   public opc: boolean = false;
