@@ -18,6 +18,8 @@ import { DeleteSessionUserComponent } from './delete-session-user/delete-session
 import { PermisosRolesComponent } from './permisos-roles/permisos-roles.component';
 import { UsersRolesComponent } from './users-roles/users-roles.component';
 import * as jQuery from 'jquery';
+import { BotonVerdeComponent } from './templates/boton-verde/boton-verde.component';
+import { ContentModulesAdminDashboardComponent } from './templates/content-modules-admin-dashboard/content-modules-admin-dashboard.component';
 
 @NgModule({
   imports: [
@@ -38,11 +40,15 @@ import * as jQuery from 'jquery';
     UsersAdminsComponent,
     DeleteSessionUserComponent,
     PermisosRolesComponent,
-    UsersRolesComponent
+    UsersRolesComponent,
+    BotonVerdeComponent,
+    ContentModulesAdminDashboardComponent
   ],
   exports:[
     IonicModule,
-    IonModal
+    IonModal,
+    BotonVerdeComponent,
+    ContentModulesAdminDashboardComponent
   ]
 })
 export class AdminPageModule {}

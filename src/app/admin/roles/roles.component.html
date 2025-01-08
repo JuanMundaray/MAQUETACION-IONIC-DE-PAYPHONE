@@ -4,71 +4,56 @@
   <ion-card class="bg-white rounded pt-4">
     
   <!-- Botón para agregar rol -->
-    <div class="ion-text-center mb-4">
-      <ion-button fill="outline" color="success" (click)="addRol()">
-        Nuevo
-      </ion-button>
-    </div>
+	<app-boton-verde  (click)="addRol()">Nuevo</app-boton-verde>
 
-    <div class="m-4">
-      
-      <ion-card-header class="ion-text-center">
-        <ion-card-title class="subtitle">
-          <ion-icon name="settings-outline"></ion-icon>
-          Administración de roles
-        </ion-card-title>
-      </ion-card-header>
+	<app-content-modules-admin-dashboard>
+	
+		<span content-header>Administración de Usuarios Admin</span>
 
-      <!-- Tabla de Roles -->
-      <ion-card class="bg-white">
-        <ion-card-content>
-          <div *ngIf="perread">
-            <ion-grid>
-                <ion-row class="table-header">
-                  <ion-col>Fecha</ion-col>
-                  <ion-col>Activo</ion-col>
-                  <ion-col>Nombre</ion-col>
-                  <ion-col>Acceso</ion-col>
-                  <ion-col>Acciones</ion-col>
-                </ion-row>
-                <ion-row *ngFor="let rol of allRol">
-                  <ion-col>{{ rol.ROL_CA | date: 'dd-MM-yyyy hh:mma' }}</ion-col>
-                  <ion-col>
-                    <ion-checkbox [checked]="rol.ROL_ACTIVE == 1" disabled></ion-checkbox>
-                  </ion-col>
-                  <ion-col>
-                    {{ rol.ROL_NAME }}
-                    <sup *ngIf="this.proname == 'Administrator'">({{ rol.COM_NAME }})</sup>
-                  </ion-col>
-                  <ion-col>{{ rol.ROL_ACCESS }}</ion-col>
-                  <ion-col>
-                    <ion-button
-                      *ngIf="perwrite"
-                      color="primary"
-                      (click)="editperm(rol.ROL_ID, rol.ROL_ACTIVE, rol.ROL_NAME, rol.ROL_ACCESS)"
-                    >
-                      <ion-icon slot="start" name="pencil-outline"></ion-icon>
-                      Editar
-                    </ion-button>
-                    <ion-button
-                      *ngIf="peradm"
-                      color="danger"
-                      (click)="deleteperm(rol.ROL_ID, rol.ROL_NAME)"
-                    >
-                      <ion-icon slot="start" name="trash-outline"></ion-icon>
-                      Eliminar
-                    </ion-button>
-                  </ion-col>
-                </ion-row>
-            </ion-grid>
-          </div>
-        </ion-card-content>
-      </ion-card>
-    </div>
-  </ion-card>
+		<div content-grid>
+			<ion-row class="table-header">
+					<ion-col>Fecha</ion-col>
+					<ion-col>Activo</ion-col>
+					<ion-col>Nombre</ion-col>
+					<ion-col>Acceso</ion-col>
+					<ion-col>Acciones</ion-col>
+				</ion-row>
+				<ion-row *ngFor="let rol of allRol">
+					<ion-col>{{ rol.ROL_CA | date: 'dd-MM-yyyy hh:mma' }}</ion-col>
+					<ion-col>
+						<ion-checkbox [checked]="rol.ROL_ACTIVE == 1" disabled></ion-checkbox>
+					</ion-col>
+					<ion-col>
+						{{ rol.ROL_NAME }}
+						<sup *ngIf="this.proname == 'Administrator'">({{ rol.COM_NAME }})</sup>
+					</ion-col>
+					<ion-col>{{ rol.ROL_ACCESS }}</ion-col>
+					<ion-col>
+						<ion-button
+						*ngIf="perwrite"
+						color="primary"
+						(click)="editperm(rol.ROL_ID, rol.ROL_ACTIVE, rol.ROL_NAME, rol.ROL_ACCESS)"
+						>
+						<ion-icon slot="start" name="pencil-outline"></ion-icon>
+						Editar
+						</ion-button>
+						<ion-button
+						*ngIf="peradm"
+						color="danger"
+						(click)="deleteperm(rol.ROL_ID, rol.ROL_NAME)"
+						>
+						<ion-icon slot="start" name="trash-outline"></ion-icon>
+						Eliminar
+						</ion-button>
+					</ion-col>
+				</ion-row>
+		</div>
+
+	</app-content-modules-admin-dashboard>
+	</ion-card>
 
   <!-- Modales -->
-  <ion-modal [isOpen]="showAddModal">
+  <ion-modal [isOpen]="showAddModal"  (didDismiss)="closeAddModal()">
     <ng-template> 
       <ion-header>
         <ion-toolbar color="primary">
@@ -88,7 +73,8 @@
           <ion-button class="me-2" color="secondary" fill="outline" (click)="closeAddModal()">
             Cerrar
           </ion-button>
-          <ion-button color="primary" fill="outline" (click)="requestAdd()">
+          <ion-button color="primary" fill="outline
+          " (click)="requestAdd()">
             Guardar
           </ion-button>
         </ion-footer>

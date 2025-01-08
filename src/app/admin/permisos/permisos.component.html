@@ -2,60 +2,45 @@
 
   <div class="bg-white ion-padding pt-4">
   <!-- Botón Nuevo -->
-  <ion-grid class="pb-5">
-    <ion-row class="ion-justify-content-center ion-margin-top">
-      <ion-col size="12" size-lg="1" class="ion-margin-end">
-        <ion-button expand="block" fill="outline" color="success" (click)="addPerm()">
-          Nuevo
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+	 <app-boton-verde  (click)="addPerm()">
+		Nuevo
+	 </app-boton-verde>
 
-  <!-- Título -->
-  <div class="border-1 rounded">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title class="text-center d-flex align-items-center justify-content-center p-1 subtitle">
-          <ion-icon name="settings-outline"></ion-icon> Administración de Permisos
-        </ion-card-title>
-      </ion-card-header>
-    </ion-card>
+	 <app-content-modules-admin-dashboard>
+		
+		<span content-header>Administración de Usuarios Admin</span>
 
-    <!-- Tabla de Permisos -->
-        <ion-card class="ion-padding">
-          <ion-grid>
-            <ion-row class="table-header">
-              <ion-col>Fecha Creado</ion-col>
-              <ion-col>Activo</ion-col>
-              <ion-col>Nombre</ion-col>
-              <ion-col>Acceso</ion-col>
-              <ion-col>Global</ion-col>
-              <ion-col>Acciones</ion-col>
-            </ion-row>
+		<div content-grid>
+			<ion-row class="table-header">
+				<ion-col>Fecha Creado</ion-col>
+				<ion-col>Activo</ion-col>
+				<ion-col>Nombre</ion-col>
+				<ion-col>Acceso</ion-col>
+				<ion-col>Global</ion-col>
+				<ion-col>Acciones</ion-col>
+			</ion-row>
 
-            <ion-row *ngFor="let per of allPerm">
-              <ion-col>{{ per.PER_CA | date: 'dd-MM-yyyy hh:mma':'UTC 6' }}</ion-col>
-              <ion-col>
-                <ion-checkbox [checked]="per.PER_ACTIVE == 1" disabled></ion-checkbox>
-              </ion-col>
-              <ion-col>{{ per.PER_NAME }}</ion-col>
-              <ion-col>{{ per.PER_ACCESS }}</ion-col>
-              <ion-col>
-                <ion-checkbox [checked]="per.PER_APPLY == 1" disabled></ion-checkbox>
-              </ion-col>
-              <ion-col>
-                <ion-button color="primary" (click)="editperm(per.PER_ID, per.PER_APPLY, per.PER_NAME, per.PER_ACCESS)">
-                  <ion-icon slot="start" name="pencil"></ion-icon>Editar
-                </ion-button>
-                <ion-button *ngIf="peradm" color="danger" (click)="deleteperm(per.PER_ID, per.PER_NAME)">
-                  <ion-icon slot="start" name="trash"></ion-icon>Eliminar
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-card>
-  </div>
+			<ion-row *ngFor="let per of allPerm">
+				<ion-col>{{ per.PER_CA | date: 'dd-MM-yyyy hh:mma':'UTC 6' }}</ion-col>
+				<ion-col>
+				<ion-checkbox [checked]="per.PER_ACTIVE == 1" disabled></ion-checkbox>
+				</ion-col>
+				<ion-col>{{ per.PER_NAME }}</ion-col>
+				<ion-col>{{ per.PER_ACCESS }}</ion-col>
+				<ion-col>
+				<ion-checkbox [checked]="per.PER_APPLY == 1" disabled></ion-checkbox>
+				</ion-col>
+				<ion-col>
+				<ion-button color="primary" (click)="editperm(per.PER_ID, per.PER_APPLY, per.PER_NAME, per.PER_ACCESS)">
+					<ion-icon slot="start" name="pencil"></ion-icon>Editar
+				</ion-button>
+				<ion-button *ngIf="peradm" color="danger" (click)="deleteperm(per.PER_ID, per.PER_NAME)">
+					<ion-icon slot="start" name="trash"></ion-icon>Eliminar
+				</ion-button>
+				</ion-col>
+			</ion-row>
+		</div>
+    </app-content-modules-admin-dashboard>
   </div>
 
   <div class="page">

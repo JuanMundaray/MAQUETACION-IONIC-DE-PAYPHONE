@@ -1,0 +1,21 @@
+
+<div class="container pb-3">
+  <!-- Tabla de Países -->
+   <ion-card class="bg-light m-4 p-0">
+    <ion-card-content class="p-0">
+      <!-- Titulo del Contenido -->
+       
+      <ion-card-header>
+        <ion-card-title class="text-center text-white subtitle mb-2">
+          <ion-icon name="settings-outline"></ion-icon>
+          <ng-content select="[content-header]"></ng-content>
+        </ion-card-title>
+      </ion-card-header>
+
+      <!-- Tabla -->
+      <ion-grid class="text-black">
+        <ng-content select="[content-grid]"></ng-content>
+      </ion-grid>
+    </ion-card-content>
+   </ion-card>
+</div>

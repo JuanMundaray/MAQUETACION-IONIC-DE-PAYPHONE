@@ -1,243 +1,227 @@
-<div class="bg-light pt-4 rounded">
+<ion-card class="bg-light pt-4 rounded">
 
 	<!-- Botón Nuevo -->
-	<div class="d-flex justify-content-center mb-5">
-		<ion-button (click)="openMdl()" fill="outline" expand="block" color="success">
-			Nuevo
-		</ion-button>
-	</div>
+	 <app-boton-verde (click)="showAddAdminModal=true">
+		Nuevo
+	 </app-boton-verde>
 
 	<!-- Tabla de usuarios -->
-	<div class="container mt-2 pb-3">
-		<ion-card class="bg-light m-4">
-			<ion-card-content class="p-0">	
-				<!-- Titulo de Contenido -->
-				<ion-card-header>
-					<ion-card-title class="text-center text-white subtitle mb-2">
-						<ion-icon name="settings-outline"></ion-icon>
-						Administración de Usuarios Admin
-					</ion-card-title>
-				</ion-card-header>
-				<!-- Tabla -->
-				<ion-grid class="text-black">
-					<ion-row>
-						<ion-col>Creado</ion-col>
-						<ion-col>Nombre</ion-col>
-						<ion-col>Correo</ion-col>
-						<ion-col>Telefono</ion-col>
-						<ion-col>Compañias</ion-col>
-						<ion-col>Acciones</ion-col>
-					</ion-row>
-					<ion-row *ngFor="let user of allUsers">
-						<ion-col>{{ user.fecha_registro | date: 'dd-MM-yyyy hh:mm' }}</ion-col>
-						<ion-col>{{ user.usuario }}</ion-col>
-						<ion-col>{{ user.correo }}</ion-col>
-						<ion-col>{{ user.telefono.slice(-10) }}</ion-col>
-						<ion-col>{{ user.empresa }}</ion-col>
-						<ion-col>
-							<ion-button
-							*ngIf="perwrite"
-							(click)="mdlEditaAdmin(user.id_usuario, user.usuario)"
-							color="primary"
-							>
-							<ion-icon name="pencil-outline"></ion-icon>
-							Editar
-							</ion-button>
-							<ion-button
-							*ngIf="perwrite"
-							(click)="mdlPass(user.id_usuario)"
-							color="warning"
-							>
-							<ion-icon name="lock-closed-outline"></ion-icon>
-							Restablecer
-							</ion-button>
-							<ion-button
-							*ngIf="peradm"
-							(click)="borraAdmin(user.id_usuario, user.id_perfil)"
-							color="danger"
-							>
-							<ion-icon name="trash-outline"></ion-icon>
-							Eliminar
-							</ion-button>
-						</ion-col>
-					</ion-row>
-				</ion-grid>
-			</ion-card-content>
-		</ion-card>
-	</div>
 
-	<!-- Modal Agregar Admin -->
-	<ion-modal [isOpen]="showAddAdminModal" (didDismiss)="closeAddAdminModal()">
-		<ion-header>
-			<ion-toolbar color="primary">
-				<ion-title>
-					<ion-icon name="person-add-outline"></ion-icon>
-					Registro Nuevo Admin
-				</ion-title>
-			</ion-toolbar>
-		</ion-header>
+	<app-content-modules-admin-dashboard>
+		<span content-header>Administración de Usuarios Admin</span>
 
-		<div>
-			<div class="ion-padding">
-			<form  [formGroup]="newAdminForm">
-				<ion-grid>
-				<!-- Usuario -->
-				<ion-row>
-					<ion-col size="12" sizeMd="6">
-					<ion-item>
-						<ion-label position="floating">Usuario *</ion-label>
-						<ion-input
-						type="text"
-						placeholder="Usuario del Admin"
-						formControlName="userAdmin"
-						></ion-input>
-					</ion-item>
-					<ion-note
-						*ngIf="newAdminForm.get('userAdmin')?.touched && newAdminForm.get('userAdmin')?.errors?.['required']"
-						color="danger"
-						>Este campo es requerido</ion-note
-					>
-					</ion-col>
+		<div content-grid>
 
-					<!-- Nombres -->
-					<ion-col size="12" sizeMd="6">
-					<ion-item>
-						<ion-label position="floating">Nombres *</ion-label>
-						<ion-input
-						type="text"
-						placeholder="Nombre del Admin"
-						formControlName="nombAdmin"
-						></ion-input>
-					</ion-item>
-					<ion-note
-						*ngIf="newAdminForm.get('nombAdmin')?.touched && newAdminForm.get('nombAdmin')?.errors?.['required']"
-						color="danger"
-						>Este campo es requerido</ion-note
-					>
-					</ion-col>
-				</ion-row>
+			<ion-row class="text-center table-header">
+				<ion-col>Creado</ion-col>
+				<ion-col>Nombre</ion-col>
+				<ion-col>Correo</ion-col>
+				<ion-col>Telefono</ion-col>
+				<ion-col>Compañias</ion-col>
+				<ion-col>Acciones</ion-col>
+			</ion-row>
 
-				<!-- Apellidos -->
-				<ion-row>
-					<ion-col size="12" sizeMd="6">
-					<ion-item>
-						<ion-label position="floating">Apellidos *</ion-label>
-						<ion-input
-						type="text"
-						placeholder="Apellidos del Admin"
-						formControlName="apellAdmin"
-						></ion-input>
-					</ion-item>
-					<ion-note
-						*ngIf="newAdminForm.get('apellAdmin')?.touched && newAdminForm.get('apellAdmin')?.errors?.['required']"
-						color="danger"
-						>Este campo es requerido</ion-note
+			<ion-row *ngFor="let user of allUsers">
+				<ion-col>{{ user.fecha_registro | date: 'dd-MM-yyyy hh:mm' }}</ion-col>
+				<ion-col>{{ user.usuario }}</ion-col>
+				<ion-col>{{ user.correo }}</ion-col>
+				<ion-col>{{ user.telefono.slice(-10) }}</ion-col>
+				<ion-col>{{ user.empresa }}</ion-col>
+				<ion-col>
+					<ion-button
+					(click)="mdlEditaAdmin(user.id_usuario, user.usuario)"
+					color="primary"
 					>
-					</ion-col>
-
-					<!-- Empresa -->
-					<ion-col size="12" sizeMd="6" *ngIf="proname === 'Administrator'">
-					<ion-item>
-						<ion-label position="floating">Empresa *</ion-label>
-						<ion-select formControlName="comAdmin">
-						<ion-select-option
-							*ngFor="let company of allEmpresas"
-							[value]="company.COM_ID"
-						>
-							{{ company.COM_NAME }}
-						</ion-select-option>
-						</ion-select>
-					</ion-item>
-					<ion-note
-						*ngIf="newAdminForm.get('comAdmin')?.touched && newAdminForm.get('comAdmin')?.errors?.['required']"
-						color="danger"
-						>Este campo es requerido</ion-note
+					<ion-icon name="pencil-outline"></ion-icon>
+					Editar
+					</ion-button>
+					<ion-button
+					(click)="mdlPass(user.id_usuario)"
+					color="warning"
 					>
-					</ion-col>
-				</ion-row>
-
-				<!-- Teléfono y Correo -->
-				<ion-row>
-					<ion-col size="12" sizeMd="6">
-					<ion-item>
-						<ion-label position="floating">Nro. de Teléfono *</ion-label>
-						<ion-input
-						type="text"
-						placeholder="Teléfono del Admin"
-						formControlName="nroTelfAdmin"
-						[maxlength]="maxLen"
-						(ionInput)="keyPress($event, 't')"
-						></ion-input>
-					</ion-item>
-					<ion-note
-						*ngIf="newAdminForm.get('nroTelfAdmin')?.touched && newAdminForm.get('nroTelfAdmin')?.errors?.['required']"
-						color="danger"
-						>Este campo es requerido</ion-note
+					<ion-icon name="lock-closed-outline"></ion-icon>
+					Restablecer
+					</ion-button>
+					<ion-button
+					(click)="borraAdmin(user.id_usuario, user.id_perfil)"
+					color="danger"
 					>
-					</ion-col>
-
-					<ion-col size="12" sizeMd="6">
-					<ion-item>
-						<ion-label position="floating">Email *</ion-label>
-						<ion-input
-						type="email"
-						placeholder="Email del Admin"
-						formControlName="emailAdmin"
-						></ion-input>
-					</ion-item>
-					<ion-note
-						*ngIf="newAdminForm.get('emailAdmin')?.touched && newAdminForm.get('emailAdmin')?.errors?.['required']"
-						color="danger"
-						>Este campo es requerido</ion-note
-					>
-					<ion-note
-						*ngIf="newAdminForm.get('emailAdmin')?.touched && newAdminForm.get('emailAdmin')?.errors?.['email']"
-						color="danger"
-						>El correo no es válido</ion-note
-					>
-					</ion-col>
-				</ion-row>
-
-				<!-- País -->
-				<ion-row>
-					<ion-col size="12" sizeMd="6" *ngIf="proname === 'Administrator'">
-					<ion-item>
-						<ion-label position="floating">País *</ion-label>
-						<ion-select formControlName="couAdmin">
-						<ion-select-option
-							*ngFor="let country of allPais"
-							[value]="country.COU_ID"
-						>
-							{{ country.COU_NAME }}
-						</ion-select-option>
-						</ion-select>
-					</ion-item>
-					<ion-note
-						*ngIf="newAdminForm.get('couAdmin')?.touched && newAdminForm.get('couAdmin')?.errors?.['required']"
-						color="danger"
-						>Este campo es requerido</ion-note
-					>
-					</ion-col>
-				</ion-row>
-				</ion-grid>
-			</form>
-			</div>
+					<ion-icon name="trash-outline"></ion-icon>
+					Eliminar
+					</ion-button>
+				</ion-col>
+			</ion-row>
 		</div>
 
-		<ion-footer>
-			<ion-toolbar>
-			<ion-buttons slot="end">
-				<ion-button (click)="closeAddAdminModal()" color="medium">Cerrar</ion-button>
-				<ion-button
-				(click)="onSubmit()"
-				[disabled]="newAdminForm.invalid"
-				color="success"
-				>
-				Crear
-				</ion-button>
-			</ion-buttons>
-			</ion-toolbar>
-		</ion-footer>
+	</app-content-modules-admin-dashboard>
+  
+</ion-card>
 
+	<!-- Modal Agregar Admin -->
+	 <!-- ============================== INICIO MODAL ADD Admin =========================== -->
+	<ion-modal id="mdlAddAdmin" [isOpen]="showAddAdminModal" (didDismiss)="closeAddAdminModal()">
+		<ng-template>
+			<ion-header>
+				<ion-toolbar color="primary" class="p-1">
+					<ion-title>
+						<ion-icon name="person-add-outline"></ion-icon> Registro Nuevo Admin
+					</ion-title>
+
+					<ion-buttons slot="end">
+						<ion-button (click)="closeAddAdminModal()">Cerrar</ion-button>
+					</ion-buttons>
+
+				</ion-toolbar>
+			</ion-header>
+		
+			<ion-content>
+				<form [formGroup]="newAdminForm" (ngSubmit)="onSubmit()">
+					<ion-list>
+						<!-- Usuario -->
+						<ion-item>
+							<ion-label position="floating">Usuario <span class="aster">*</span></ion-label>
+							<ion-input type="text" formControlName="userAdmin"></ion-input>
+						</ion-item>
+						<ion-text color="danger" *ngIf="newAdminForm.get('userAdmin')?.touched && newAdminForm.get('userAdmin')?.errors?.['required']">
+							Este campo es requerido
+						</ion-text>
+			
+						<!-- Nombres -->
+						<ion-item>
+						<ion-label position="floating">Nombres <span class="aster">*</span></ion-label>
+						<ion-input type="text" formControlName="nombAdmin"></ion-input>
+						</ion-item>
+						<ion-text color="danger" *ngIf="newAdminForm.get('nombAdmin')?.touched && newAdminForm.get('nombAdmin')?.errors?.['required']">
+						Este campo es requerido
+						</ion-text>
+			
+						<!-- Apellidos -->
+						<ion-item>
+						<ion-label position="floating">Apellidos <span class="aster">*</span></ion-label>
+						<ion-input type="text" formControlName="apellAdmin"></ion-input>
+						</ion-item>
+						<ion-text color="danger" *ngIf="newAdminForm.get('apellAdmin')?.touched && newAdminForm.get('apellAdmin')?.errors?.['required']">
+						Este campo es requerido
+						</ion-text>
+			
+						<!-- Empresa (solo para Administrator) -->
+						<ion-item *ngIf="proname === 'Administrator'">
+						<ion-label>Empresa <span class="aster">*</span></ion-label>
+						<ion-select formControlName="comAdmin">
+							<ion-select-option value="" disabled>Seleccionar Empresa</ion-select-option>
+							<ion-select-option *ngFor="let company of allEmpresas" [value]="company.COM_ID">
+							{{ company.COM_NAME }}
+							</ion-select-option>
+						</ion-select>
+						</ion-item>
+						<ion-text color="danger" *ngIf="newAdminForm.get('comAdmin')?.touched && newAdminForm.get('comAdmin')?.errors?.['required']">
+						Este campo es requerido
+						</ion-text>
+			
+						<!-- Teléfono -->
+						<ion-item>
+						<ion-label position="floating">Nro. de Teléfono <span class="aster">*</span></ion-label>
+						<ion-input type="tel" formControlName="nroTelfAdmin" maxlength="15" (ionInput)="keyPress($event, 't')"></ion-input>
+						</ion-item>
+						<ion-text color="danger" *ngIf="newAdminForm.get('nroTelfAdmin')?.touched && newAdminForm.get('nroTelfAdmin')?.errors?.['required']">
+						Este campo es requerido
+						</ion-text>
+			
+						<!-- Email -->
+						<ion-item>
+						<ion-label position="floating">Email <span class="aster">*</span></ion-label>
+						<ion-input type="email" formControlName="emailAdmin"></ion-input>
+						</ion-item>
+						<ion-text color="danger" *ngIf="newAdminForm.get('emailAdmin')?.touched && newAdminForm.get('emailAdmin')?.errors?.['required']">
+						Este campo es requerido
+						</ion-text>
+						<ion-text color="danger" *ngIf="newAdminForm.get('emailAdmin')?.touched && newAdminForm.get('emailAdmin')?.errors?.['email']">
+						El correo no es válido
+						</ion-text>
+			
+						<!-- País (solo para Administrator) -->
+						<ion-item *ngIf="proname === 'Administrator'">
+						<ion-label>País <span class="aster">*</span></ion-label>
+						<ion-select formControlName="couAdmin">
+							<ion-select-option value="" disabled>Seleccionar País</ion-select-option>
+							<ion-select-option *ngFor="let country of allPais" [value]="country.COU_ID">
+							{{ country.COU_NAME }}
+							</ion-select-option>
+						</ion-select>
+						</ion-item>
+						<ion-text color="danger" *ngIf="newAdminForm.get('couAdmin')?.touched && newAdminForm.get('couAdmin')?.errors?.['required']">
+						Este campo es requerido
+						</ion-text>
+					</ion-list>
+			
+					<!-- Botones -->
+					<ion-footer>
+						<ion-toolbar>
+						<ion-buttons slot="start">
+							<ion-button color="medium" (click)="closeAddAdminModal()">Cancelar</ion-button>
+						</ion-buttons>
+						<ion-buttons slot="end">
+							<ion-button type="submit" [disabled]="newAdminForm.invalid" color="success">Crear</ion-button>
+						</ion-buttons>
+						</ion-toolbar>
+					</ion-footer>
+				</form>
+			</ion-content>
+		</ng-template>
 	</ion-modal>
-</div>
+<!-- ============================== INICIO MODAL EDIT Admin =========================== -->
+<ion-modal id="mdlEditAdmin" [isOpen]="showEditModal" (didDismiss)="closeEditModal()">
+	<ng-template>
+	  <ion-header>
+		<ion-toolbar color="primary">
+		  <ion-title>
+			Editar datos de <span id="lblName">{{ selectedAdminName }}</span>
+		  </ion-title>
+		  <ion-buttons slot="end">
+			<ion-button (click)="closeEditModal()">Cerrar</ion-button>
+		  </ion-buttons>
+		</ion-toolbar>
+	  </ion-header>
+  
+	  <ion-content>
+		<form [formGroup]="editAdminForm" (ngSubmit)="guardaEdAdmin()">
+		  <ion-list>
+			<!-- Teléfono -->
+			<ion-item>
+			  <ion-label position="floating">Nro. de Teléfono <span class="aster">*</span></ion-label>
+			  <ion-input type="tel" formControlName="nroTelfAdmin"></ion-input>
+			</ion-item>
+			<ion-text color="danger" *ngIf="editAdminForm.get('nroTelfAdmin')?.touched && editAdminForm.get('nroTelfAdmin')?.errors?.['required']">
+			  Este campo es requerido
+			</ion-text>
+  
+			<!-- Email -->
+			<ion-item>
+			  <ion-label position="floating">Email <span class="aster">*</span></ion-label>
+			  <ion-input type="email" formControlName="emailAdmin"></ion-input>
+			</ion-item>
+			<ion-text color="danger" *ngIf="editAdminForm.get('emailAdmin')?.touched && editAdminForm.get('emailAdmin')?.errors?.['required']">
+			  Este campo es requerido
+			</ion-text>
+			<ion-text color="danger" *ngIf="editAdminForm.get('emailAdmin')?.touched && editAdminForm.get('emailAdmin')?.errors?.['email']">
+			  El correo no es válido
+			</ion-text>
+		  </ion-list>
+  
+		  <!-- Botones -->
+		  <ion-footer>
+			<ion-toolbar>
+			  <ion-buttons slot="start">
+				<ion-button color="medium" (click)="closeEditModal()">Cancelar</ion-button>
+			  </ion-buttons>
+			  <ion-buttons slot="end">
+				<ion-button type="submit" [disabled]="editAdminForm.invalid" color="primary">Guardar</ion-button>
+			  </ion-buttons>
+			</ion-toolbar>
+		  </ion-footer>
+		</form>
+	  </ion-content>
+	</ng-template>
+  </ion-modal> -->
+  <!-- ============================== FIN MODAL EDIT Admin =========================== -->
+  

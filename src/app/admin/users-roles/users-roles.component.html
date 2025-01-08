@@ -1,25 +1,18 @@
 <div class="ion-padding">
-  <div class=" bg-white">
+  <ion-card class="bg-white w-100 p-5">
 
-    <ion-grid class="text-black">
+    <ion-grid class="text-black w-100">
       <!-- Componente de filtrado -->
-      <ion-row class="ion-padding-top">
-        <ion-col size="12" size-md="4">
+      <ion-row>
+        <ion-col size-md="4">
           <ion-label>Buscar Usuario:</ion-label>
-          <ion-input
-            fill="outline"
-            color="blue"
-            [(ngModel)]="filterText"
-            (ionInput)="filtrarUsuarios(filterText)"
-            placeholder="Nombre o teléfono del usuario"
-            clear-input
-          ></ion-input>
+          <ion-input style="text-align:start;" fill="outline" color="blue" [(ngModel)]="filterText" (ionInput)="filtrarUsuarios(filterText)" placeholder="Nombre o teléfono del usuario" clear-input></ion-input>
         </ion-col>
       </ion-row>
   
       <ion-row class="ion-margin-top">
         <!-- Usuarios -->
-        <ion-col size-sm="12" size-md="6">
+        <ion-col size-sm="12" size-md="12">
           <ion-title class="ion-text-center"><strong>Usuarios:</strong></ion-title>
           <ion-card
             *ngFor="let user of paginatedUsers"
@@ -74,26 +67,11 @@
           </ion-card>
   
           <!-- Paginación -->
-          <ion-row class="ion-text-center ion-padding">
-            <ion-col>
-              <p class="mb-3">Página {{ currentPage }} de {{ totalPages }}</p>
-              <ion-button
-                size="small"
-                (click)="previousPage()"
-                [disabled]="currentPage === 1"
-              >
-                &lt;- Anterior
-              </ion-button>
-              <ion-button
-               class="ms-3"
-                size="small"
-                (click)="nextPage()"
-                [disabled]="currentPage === totalPages"
-              >
-                Siguiente -&gt;
-              </ion-button>
-            </ion-col>
-          </ion-row>
+			<ion-row class="ion-text-center ion-padding d-flex justify-content-center">
+				<p class="mb-3 w-100">Página {{ currentPage }} de {{ totalPages }}</p>
+				<ion-button size="small" (click)="previousPage()" [disabled]="currentPage === 1"> &lt;- Anterior </ion-button>
+				<ion-button class="ms-3" size="small" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente -&gt;</ion-button>
+			</ion-row>
         </ion-col>
   
         <!-- Roles -->
@@ -148,5 +126,5 @@
         </ion-list>
       </div>
     </ion-modal>
-  </div>
+  </ion-card>
 </div>

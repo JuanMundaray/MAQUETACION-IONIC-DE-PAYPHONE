@@ -1,66 +1,58 @@
 <div class="ion-padding">
-  <div class="bg-light rounded pt-4">
+  <ion-card class="bg-light rounded pt-4">
     <!-- Botón Nuevo -->
-    <div class="d-flex justify-content-center ion-padding">
-        <ion-button expand="block" fill="outline" color="success" (click)="addEmpresas()">
-          Nuevo
-        </ion-button>
-    </div>
+      <app-boton-verde  (click)="addEmpresas()">
+        Nuevo
+      </app-boton-verde>
       <!-- Encabezado de la página -->
        <div class="m-4 pb-5">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title class="text-center d-flex align-items-center justify-content-center p-1 subtitle">
-                <ion-icon name="settings-outline"></ion-icon> Administración de Empresa
-              </ion-card-title>
-            </ion-card-header>
-          </ion-card>
 
           <!-- Tabla de empresas -->
-          <ion-card class="bg-light">
-            <ion-card-content>
-              <ion-grid>
-                <ion-row class="table-header">
-                  <ion-col>Fecha Creado</ion-col>
-                  <ion-col>Empresas</ion-col>
-                  <ion-col>País</ion-col>
-                  <ion-col>Acciones</ion-col>
-                </ion-row>  
-                <ion-row *ngFor="let per of allEmpresas" class="table-row">
-                  <ion-col>{{ per.COM_CA | date: 'dd-MM-yyyy hh:mma': 'UTC 6' }}</ion-col>
-                  <ion-col>{{ per.COM_NAME }}</ion-col>
-                  <ion-col>{{ per.COU_NAME }}</ion-col>
-                  <ion-col>
-                    <ion-button
-                      *ngIf="perwrite"
-                      color="primary"
-                      (click)="editEmpresas(per.COM_ID, per.COM_NAME, per.COU_ID, per.COU_NAME)"
-                    >
-                      <ion-icon name="pencil"></ion-icon>
-                    </ion-button>
-                    <ion-button
-                      *ngIf="peradm"
-                      color="danger"
-                      (click)="deleteEmpresas(per.COM_ID, per.COM_NAME)"
-                    >
-                      <ion-icon name="trash"></ion-icon>
-                    </ion-button>
-                    <ion-button
-                      *ngIf="peradm"
-                      color="light"
-                      (click)="openCalculadora(1, per.COM_ID, 1, per.COM_NAME)"
-                    >
-                      <ion-icon name="construct-outline"></ion-icon>
-                    </ion-button>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card-content>
-          </ion-card>
+          <app-content-modules-admin-dashboard>
+            <span content-header>Administración de Usuarios Admin</span>
+
+            <div content-grid>
+				<ion-row class="table-header">
+					<ion-col>Fecha Creado</ion-col>
+					<ion-col>Empresas</ion-col>
+					<ion-col>País</ion-col>
+					<ion-col>Acciones</ion-col>
+				</ion-row> 
+
+				<ion-row *ngFor="let per of allEmpresas" class="table-row">
+					<ion-col>{{ per.COM_CA | date: 'dd-MM-yyyy hh:mma': 'UTC 6' }}</ion-col>
+					<ion-col>{{ per.COM_NAME }}</ion-col>
+					<ion-col>{{ per.COU_NAME }}</ion-col>
+					<ion-col>
+						<ion-button
+						*ngIf="perwrite"
+						color="primary"
+						(click)="editEmpresas(per.COM_ID, per.COM_NAME, per.COU_ID, per.COU_NAME)"
+						>
+						<ion-icon name="pencil"></ion-icon>
+						</ion-button>
+						<ion-button
+						*ngIf="peradm"
+						color="danger"
+						(click)="deleteEmpresas(per.COM_ID, per.COM_NAME)"
+						>
+						<ion-icon name="trash"></ion-icon>
+						</ion-button>
+						<ion-button
+						*ngIf="peradm"
+						color="light"
+						(click)="openCalculadora(1, per.COM_ID, 1, per.COM_NAME)"
+						>
+						<ion-icon name="construct-outline"></ion-icon>
+						</ion-button>
+					</ion-col>
+				</ion-row>
+            </div>
+          </app-content-modules-admin-dashboard>
        </div>
 
       <!-- Modal Crear Empresa -->
-      <ion-modal [isOpen]="showAddModal">
+      <ion-modal [isOpen]="showAddModal"  (didDismiss)="closeAddModal()">
         <ng-template>
 
           <ion-header>
@@ -162,5 +154,5 @@
         </div>
       </ng-template>
     </ion-modal>
-  </div>
+  </ion-card>
 </div>

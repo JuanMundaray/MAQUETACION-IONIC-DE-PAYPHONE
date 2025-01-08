@@ -24,7 +24,9 @@ export class UsersAdminsComponent implements OnInit {
   @Input() permission!: boolean;
   allPais: any = [];
   allEmpresas: any = [];
-  public showAddAdminModal!:boolean;
+  public showAddAdminModal:boolean=false;
+  public showEditModal:boolean=false;
+  public showDeleteModal:boolean=false;
   public fic: any;
   public perwritemdl!: boolean;
   public perreadmdl!: boolean;
@@ -63,6 +65,7 @@ export class UsersAdminsComponent implements OnInit {
   public urlapicel: string = environment.url_api_cel;
   public urlapicf: string = environment.url_api_cf;
   public newAdminForm!: FormGroup;
+  public editAdminForm!: FormGroup;
   public newBtnAdminForm!: FormGroup;
   public classNameInpSup: any = ['col-12', 'col-lg-4'];
   public classNameInpInf: any = ['col-12', 'col-lg-4'];
@@ -90,6 +93,7 @@ export class UsersAdminsComponent implements OnInit {
   ];
 
   public isModalOpen:boolean=false;
+  public selectedAdminName:string="Admin";
 
   constructor(
     private func: FunctionsService,
@@ -309,7 +313,8 @@ export class UsersAdminsComponent implements OnInit {
       .subscribe((response: any) => {
         this.spinner.hide(); //fin de la animacion, va al terminar el proceso
         if (response.ok) {
-          $('#mdlAddAdmin').modal('hide');
+          // $('#mdlAddAdmin').modal('hide');
+          this.showAddAdminModal=true;
           var data2 = this.func.decrypt(response.clave, 'dataUserAdmin');
           var data3 = this.func.decrypt(response.last_pro_id, 'dataUserAdmin');
           // valida proceso exitoso
@@ -377,8 +382,7 @@ export class UsersAdminsComponent implements OnInit {
       });
   }
 
-  openMdl() {
-    //$('#mdlAddAdmin').modal('show');
+  openModalAddAdmin() {
     this.showAddAdminModal = true;
 
     if (this.proname == 'Administrator') {
@@ -448,6 +452,10 @@ export class UsersAdminsComponent implements OnInit {
     this.showAddAdminModal = false;
   }
 
+  closeEditModal(){
+    this.showEditModal = false;
+  }
+
   mdlEditaAdmin(idUser: any, name: any) {
     $('#idso').html(this.func.crypt(idUser, 'edAdmins'));
     var phone10 = $('#t' + idUser)
@@ -455,8 +463,8 @@ export class UsersAdminsComponent implements OnInit {
       .slice(-10);
     $('#inpEdTelf').val(phone10);
     $('#inpEdEmail').val($('#e' + idUser).html());
-    $('#lblName').val(name);
-    $('#mdlEditAdmin').modal('show');
+    this.selectedAdminName = name;
+    this.showEditModal = true;
   }
 
   guardaEdAdmin() {
@@ -500,7 +508,7 @@ export class UsersAdminsComponent implements OnInit {
             $('#t' + idSoEd).html($('#inpEdTelf').val());
             $('#e' + idSoEd).html($('#inpEdEmail').val());
             this.mensaje.success('Exito...!', response.response);
-            $('#mdlEditAdmin').modal('hide');
+            this.showEditModal = false;
           } else {
             this.mensaje.error('Oops', response.response);
           }
@@ -515,7 +523,7 @@ export class UsersAdminsComponent implements OnInit {
     } else {
       $('#idSoD').html(this.func.crypt(idUser, 'delRegAdmin'));
       $('#nombreSo').html($('#name' + idUser).html());
-      $('#mdlBorrSo').modal('show');
+      this.showDeleteModal = true;
     }
   }
 
@@ -547,7 +555,7 @@ export class UsersAdminsComponent implements OnInit {
         if (response.ok) {
           $('#' + idPf).remove();
           this.mensaje.success('Exito...!', response.response);
-          $('#mdlBorrSo').modal('hide');
+          this.showDeleteModal = false;
         } else {
           this.mensaje.error('Oops', response.response);
         }

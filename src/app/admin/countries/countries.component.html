@@ -1,56 +1,40 @@
 <div class="text-center ion-padding">
  
- <div class="bg-light pt-4 rounded">
+	<ion-card class="bg-light pt-4 rounded">
 
-	<!-- Botón Nuevo -->
-	<div class="d-flex justify-content-center mb-5">
-		<ion-button expand="block" color="success" fill="outline" (click)="addPais()">Nuevo</ion-button>
-	</div>
+		<!-- Botón Nuevo -->
+		<app-boton-verde  (click)="addPais()">
+			Nuevo
+		</app-boton-verde>
 
-    <div class="text-black">
-		
-		<div class="container pb-3">
-			<!-- Tabla de Países -->
-			 <ion-card class="bg-light m-4 p-0">
-				<ion-card-content class="p-0">
-					<!-- Titulo del Contenido -->
-					<ion-card-header class="text-center subtitle mb-3">
-						<ion-card-title class="text-white">Administración de Paises</ion-card-title>
-					</ion-card-header>
+		<app-content-modules-admin-dashboard>
+			<span content-header>Administración de Usuarios Admin</span>
 
-					<!-- Titulo de la Tabla -->
-					<ion-card-header class="mb-3">
-						<ion-card-title class="text-black">Lista de Países</ion-card-title>
-					</ion-card-header>
-
-					<!-- Tabla -->
-					<ion-grid class="text-black">
-						<ion-row>
-							<ion-col><strong>Fecha Creado</strong></ion-col>
-							<ion-col><strong>País</strong></ion-col>
-							<ion-col><strong>Acciones</strong></ion-col>
-						</ion-row>
-						<ion-row *ngFor="let per of allPais">
-							<ion-col>{{ per.COU_CA | date: 'dd-MM-yyyy hh:mma':'UTC 6' }}</ion-col>
-							<ion-col>{{ per.COU_NAME }}</ion-col>
-							<ion-col>
-							<ion-button color="primary" (click)="editPais(per.COU_ID, per.COU_NAME, per.COU_ABBREVIATION)">
-								Editar
-							</ion-button>
-							<ion-button color="danger" (click)="deletePais(per.COU_ID, per.COU_NAME)">
-								Eliminar
-							</ion-button>
-							</ion-col>
-						</ion-row>
-					</ion-grid>
-				</ion-card-content>
-			 </ion-card>
-		</div>
-</div>
+			<div content-grid>
+				<ion-row class="table-header">
+					<ion-col>Fecha Creado</ion-col>
+					<ion-col>País</ion-col>
+					<ion-col>Acciones</ion-col>
+				</ion-row>
+				<ion-row *ngFor="let per of allPais">
+					<ion-col>{{ per.COU_CA | date: 'dd-MM-yyyy hh:mma':'UTC 6' }}</ion-col>
+					<ion-col>{{ per.COU_NAME }}</ion-col>
+					<ion-col>
+					<ion-button color="primary" (click)="editPais(per.COU_ID, per.COU_NAME, per.COU_ABBREVIATION)">
+						Editar
+					</ion-button>
+					<ion-button color="danger" (click)="deletePais(per.COU_ID, per.COU_NAME)">
+						Eliminar
+					</ion-button>
+					</ion-col>
+				</ion-row>
+			</div>
+		</app-content-modules-admin-dashboard>
+	</ion-card>
 
 		
 <!-- Modal Agregar País -->
-<ion-modal [isOpen]="showAddPaisModal">
+<ion-modal [isOpen]="showAddPaisModal" (didDismiss)="closeAddPaisModal()">
 	<ng-template>
 	  <ion-header>
 		<ion-toolbar color="primary">
@@ -99,7 +83,7 @@
        </ion-item>
        <ion-footer>
          <ion-button expand="block" (click)="requestUpdate(fpupd)">Actualizar</ion-button>
-         <ion-button expand="block" color="light" (click)="showEditarPaisModal = false">Cerrar</ion-button>
+         <ion-button expand="block" color="light" (click)="closeAddPaisModal()">Cerrar</ion-button>
        </ion-footer>
      </div>
    </ion-modal>
@@ -122,5 +106,4 @@
 	</div>
    </ion-modal>
  </div>
-</div>
  
