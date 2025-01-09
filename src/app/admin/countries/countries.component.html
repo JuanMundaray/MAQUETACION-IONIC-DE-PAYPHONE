@@ -33,77 +33,113 @@
 	</ion-card>
 
 		
-<!-- Modal Agregar País -->
-<ion-modal [isOpen]="showAddPaisModal" (didDismiss)="closeAddPaisModal()">
-	<ng-template>
-	  <ion-header>
-		<ion-toolbar color="primary">
-		  <ion-title>Agregar País</ion-title>
-		  <ion-buttons slot="end">
-			<ion-button (click)="showAddPaisModal = false">Cerrar</ion-button>
-		  </ion-buttons>
-		</ion-toolbar>
-	  </ion-header>
+	<!-- Modal Agregar País -->
+	<ion-modal [isOpen]="showAddPaisModal"  (didDismiss)="closeAddPaisModal()">
+		<ng-template>
 
-	  <div class="p-4">
-		<ion-item lines="none">
-			<ion-label position="stacked" class="mb-2">Nombre:</ion-label>
-			<ion-input class="text-black" placeholder="Nombre" id="inpAddNombreP"></ion-input>
-		</ion-item>
+			<ion-header>
+			<ion-toolbar color="primary">
+				<ion-title>Agregar País</ion-title>
+				<ion-buttons slot="end">
+				<ion-button (click)="closeAddPaisModal()">Cerrar</ion-button>
+				</ion-buttons>
+			</ion-toolbar>
+			</ion-header>
 
-		<ion-item lines="none">
-			<ion-label position="stacked" class="mb-2">Abreviatura:</ion-label>
-			<ion-input class="text-black" placeholder="Abreviatura"  id="inpAddAbreP"></ion-input>
-		</ion-item>
-	  </div>
+			<div>
+			<div class="p-2">
+				<ion-item lines="none">
+					<ion-label position="stacked" class="mb-2">Nombre</ion-label>
+					<ion-input class="text-black" placeholder="Nombre" id="inpAddNombreP"></ion-input>
+				</ion-item>
 
-	  <ion-footer class="border-1 border-secondary p-3 d-flex justify-content-end ">
-		<ion-button (click)="requestAdd()" color="primary" fill="outline" class="me-1">Guardar</ion-button>
-		<ion-button color="medium" fill="outline" (click)="showAddPaisModal = false">Cerrar</ion-button>
-	  </ion-footer>
-	</ng-template>
-  </ion-modal>
+				<ion-item lines="none">
+					<ion-label position="stacked" class="mb-2">Abreviatura</ion-label>
+					<ion-input class="text-black" placeholder="Abreviatura"  id="inpAddAbreP"></ion-input>
+				</ion-item>
+			</div>
+
+			<ion-footer class="pe-3">
+				<ion-toolbar>
+				<ion-buttons slot="end">
+					<ion-button (click)="requestAdd()" color="primary" fill="outline">Guardar</ion-button>
+				</ion-buttons>
+				</ion-toolbar>
+			</ion-footer>
+			</div>
+			
+		</ng-template>
+	</ion-modal>
   
  
    <!-- Modal Editar País -->
-   <ion-modal [isOpen]="showEditarPaisModal">
-     <ion-header>
-       <ion-toolbar color="primary">
-         <ion-title>Editar País: {{ oldnamep }}</ion-title>
-       </ion-toolbar>
-     </ion-header>
-     <div>
-       <ion-item>
-         <ion-label position="floating">Nombre</ion-label>
-         <ion-input [(ngModel)]="oldnamep"></ion-input>
-       </ion-item>
-       <ion-item>
-         <ion-label position="floating">Abreviatura</ion-label>
-         <ion-input [(ngModel)]="oldabrep"></ion-input>
-       </ion-item>
-       <ion-footer>
-         <ion-button expand="block" (click)="requestUpdate(fpupd)">Actualizar</ion-button>
-         <ion-button expand="block" color="light" (click)="closeAddPaisModal()">Cerrar</ion-button>
-       </ion-footer>
-     </div>
-   </ion-modal>
+	<ion-modal [isOpen]="showEditarPaisModal"  (didDismiss)="closeEditarPaisModal()">
+		<ng-template>
+
+			<ion-header>
+			<ion-toolbar color="primary">
+				<ion-title>Editar País</ion-title>
+				<ion-buttons slot="end">
+				<ion-button (click)="closeEditarPaisModal()">Cerrar</ion-button>
+				</ion-buttons>
+			</ion-toolbar>
+			</ion-header>
+
+			<div>
+			<div class="p-2">
+				<ion-item lines="none">
+					<ion-label position="stacked" class="mb-2">Nombre</ion-label>
+					<ion-input class="text-black" placeholder="Nombre" [(ngModel)]="oldnamep"></ion-input>
+				</ion-item>
+
+				<ion-item lines="none">
+					<ion-label position="stacked" class="mb-2">Abreviatura</ion-label>
+					<ion-input class="text-black" placeholder="Abreviatura" [(ngModel)]="oldabrep"></ion-input>
+				</ion-item>
+			</div>
+
+			<ion-footer class="pe-3">
+				<ion-toolbar>
+				<ion-buttons slot="end">
+					<ion-button (click)="requestUpdate(fpupd)" color="primary" fill="outline">Actualizar</ion-button>
+				</ion-buttons>
+				</ion-toolbar>
+			</ion-footer>
+			</div>
+			
+		</ng-template>
+	</ion-modal>
  
    <!-- Modal Eliminar País -->
-   <ion-modal [isOpen]="showDeletePaisModal">
-     <ion-header>
-       <ion-toolbar color="primary">
-         <ion-title>Eliminar País</ion-title>
-       </ion-toolbar>
-     </ion-header>
-     <div>
-       <ion-text color="danger">
-         ¿Está seguro de eliminar el país <strong>{{ fpnam }}</strong>?
-       </ion-text>
-       <ion-footer>
-         <ion-button expand="block" color="danger" (click)="requestDelete(fpdel)">Eliminar</ion-button>
-         <ion-button expand="block" color="light" (click)="showDeletePaisModal = false">Cerrar</ion-button>
-       </ion-footer>
-	</div>
-   </ion-modal>
+	<ion-modal [isOpen]="showDeletePaisModal"  (didDismiss)="closeDeletePaisModal()">
+		<ng-template>
+
+			<ion-header>
+			<ion-toolbar color="danger">
+				<ion-title>Eliminar País</ion-title>
+				<ion-buttons slot="end">
+				<ion-button (click)="closeDeletePaisModal()">Cerrar</ion-button>
+				</ion-buttons>
+			</ion-toolbar>
+			</ion-header>
+
+			<div>
+			<div class="p-2 text-center">
+				<ion-text color="danger">
+				  ¿Está seguro de eliminar el país <strong>{{ fpnam }}</strong>?
+				</ion-text>
+			</div>
+
+			<ion-footer class="pe-3">
+				<ion-toolbar>
+				<ion-buttons slot="end">
+					<ion-button fill="outline" color="danger" (click)="requestDelete(fpdel)">Eliminar</ion-button>
+				</ion-buttons>
+				</ion-toolbar>
+			</ion-footer>
+			</div>
+			
+		</ng-template>
+	</ion-modal>
  </div>
  

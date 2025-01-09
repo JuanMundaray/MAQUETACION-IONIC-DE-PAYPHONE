@@ -20,7 +20,7 @@ export class PermisosComponent  implements OnInit {
 
   // Variables para manejar los modales
   isAddModalOpen = false;
-  isEditModalOpen = false;
+  isEditModalOpen = true;
 
   newPermission = {
     name: '',

@@ -82,50 +82,74 @@
     </ng-template>
   </ion-modal>
 
-  <ion-modal [isOpen]="showEditModal">
-    <ion-header>
+  <!-- Modal Editar -->
+  <ion-modal [isOpen]="showEditModal"  (didDismiss)="closeEditModal()">
+    <ng-template>
+
+      <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Editar Rol</ion-title>
+        <ion-buttons slot="end">
+        <ion-button (click)="closeEditModal()">Cerrar</ion-button>
+        </ion-buttons>
       </ion-toolbar>
-    </ion-header>
-    <div>
-      <ion-item>
-        <ion-label position="stacked">Nombre</ion-label>
-        <ion-input id="inpEdNombreR" [value]="this.oldnamep" placeholder="Nombre"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Acceso</ion-label>
-        <ion-input id="inpEdAccesoR" [value]="this.oldaccessp" placeholder="Acceso"></ion-input>
-      </ion-item>
-      <ion-footer>
-        <ion-button expand="full" color="secondary" (click)="closeEditModal()">
-          Cerrar
-        </ion-button>
-        <ion-button expand="full" color="primary" (click)="requestUpdate(fpupd)">
-          Actualizar
-        </ion-button>
+      </ion-header>
+
+      <div>
+      <div class="p-2">
+        <ion-item lines="none">
+        <ion-label position="stacked" class="mb-2">Nombre</ion-label>
+        <ion-input class="text-black" id="inpEdNombreR" [value]="this.oldnamep" placeholder="Nombre"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+        <ion-label position="stacked" class="mb-2">Acceso</ion-label>
+        <ion-input class="text-black"  id="inpEdAccesoR" [value]="this.oldaccessp" placeholder="Acceso"></ion-input>
+
+        </ion-item>
+      </div>
+
+      <ion-footer class="pe-3">
+        <ion-toolbar>
+			<ion-buttons slot="end">
+				<ion-button fill="outline" color="primary" (click)="requestUpdate(fpupd)">Actualizar</ion-button>
+			</ion-buttons>
+        </ion-toolbar>
       </ion-footer>
-    </div>
+      </div>
+      
+    </ng-template>
   </ion-modal>
 
-  <ion-modal [isOpen]="showDeleteModal">
-    <ion-header>
-      <ion-toolbar color="primary">
+  <!-- Modal Eliminar Empresa -->
+  <ion-modal [isOpen]="showDeleteModal"  (didDismiss)="closeDeleteModal()">
+    <ng-template>
+
+      <ion-header>
+      <ion-toolbar color="danger">
         <ion-title>Eliminar Rol</ion-title>
+        <ion-buttons slot="end">
+        <ion-button (click)="closeDeleteModal()">Cerrar</ion-button>
+        </ion-buttons>
       </ion-toolbar>
-    </ion-header>
-    <div>
-      <ion-text>
-        <p>¿Está seguro de eliminar el rol <strong>{{ this.fpnam }}</strong>?</p>
-      </ion-text>
-      <ion-footer>
-        <ion-button expand="full" color="secondary" (click)="closeDeleteModal()">
-          Cerrar
-        </ion-button>
-        <ion-button expand="full" color="danger" (click)="requestDelete(fpdel)">
-          Eliminar
-        </ion-button>
+      </ion-header>
+
+      <div>
+      <div class="p-2 text-center">
+        <ion-text color="danger">
+          <p>¿Está seguro de eliminar el rol <strong>{{ this.fpnam }}</strong>?</p>
+        </ion-text>
+      </div>
+
+      <ion-footer class="pe-3">
+        <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-button fill="outline" color="danger" (click)="requestDelete(fpdel)">Eliminar</ion-button>
+        </ion-buttons>
+        </ion-toolbar>
       </ion-footer>
-    </div>
+      </div>
+      
+    </ng-template>
   </ion-modal>
 </div>

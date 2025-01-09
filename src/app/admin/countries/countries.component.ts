@@ -304,7 +304,7 @@ export class CountriesComponent  implements OnInit {
     }
 
     closeDeletePaisModal(){
-      this.showEditarPaisModal = false;
+      this.showDeletePaisModal = false;
     }
   
     requestDelete(id: any) {

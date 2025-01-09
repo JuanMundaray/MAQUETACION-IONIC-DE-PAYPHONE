@@ -51,51 +51,53 @@
           </app-content-modules-admin-dashboard>
        </div>
 
-      <!-- Modal Crear Empresa -->
-      <ion-modal [isOpen]="showAddModal"  (didDismiss)="closeAddModal()">
-        <ng-template>
+    	<!-- Modal Crear Empresa -->
+		<ion-modal [isOpen]="showAddModal"  (didDismiss)="closeAddModal()">
+			<ng-template>
 
-          <ion-header>
-            <ion-toolbar color="primary">
-              <ion-title>Agregar Empresa</ion-title>
-              <ion-buttons slot="end">
-                <ion-button (click)="closeAddModal()">Cerrar</ion-button>
-              </ion-buttons>
-            </ion-toolbar>
-          </ion-header>
+				<ion-header>
+				<ion-toolbar color="primary">
+					<ion-title>Agregar Empresa</ion-title>
+					<ion-buttons slot="end">
+					<ion-button (click)="closeAddModal()">Cerrar</ion-button>
+					</ion-buttons>
+				</ion-toolbar>
+				</ion-header>
 
-          <div>
-            <div class="p-2">
-              <ion-item lines="none">
-                <ion-label position="stacked" class="mb-2">Nombre</ion-label>
-                <ion-input class="text-black" [(ngModel)]="newEmpresaName" placeholder="Nombre"></ion-input>
-              </ion-item>
-  
-              <ion-item lines="none">
-                <ion-label position="stacked" class="mb-2">País</ion-label>
-                <ion-select class="text-black" [(ngModel)]="selectedCountry">
-                  <ion-select-option class="text-black" *ngFor="let country of allPais" [value]="country.COU_ID">
-                    {{ country.COU_NAME }}
-                  </ion-select-option>
-                </ion-select>
-              </ion-item>
-            </div>
+				<div>
+				<div class="p-2">
+					<ion-item lines="none">
+					<ion-label position="stacked" class="mb-2">Nombre</ion-label>
+					<ion-input class="text-black" [(ngModel)]="newEmpresaName" placeholder="Nombre"></ion-input>
+					</ion-item>
 
-            <ion-footer class="pe-3">
-              <ion-toolbar>
-                <ion-buttons slot="end">
-                  <ion-button color="primary" fill="outline" (click)="requestAdd()">Guardar</ion-button>
-                </ion-buttons>
-              </ion-toolbar>
-            </ion-footer>
-          </div>
-          
-        </ng-template>
-      </ion-modal>
+					<ion-item lines="none">
+					<ion-label position="stacked" class="mb-2">País</ion-label>
+					<ion-select class="text-black" [(ngModel)]="selectedCountry">
+						<ion-select-option class="text-black" *ngFor="let country of allPais" [value]="country.COU_ID">
+						{{ country.COU_NAME }}
+						</ion-select-option>
+					</ion-select>
+					</ion-item>
+				</div>
+
+				<ion-footer class="pe-3">
+					<ion-toolbar>
+					<ion-buttons slot="end">
+						<ion-button color="primary" fill="outline" (click)="requestAdd()">Guardar</ion-button>
+					</ion-buttons>
+					</ion-toolbar>
+				</ion-footer>
+				</div>
+				
+			</ng-template>
+		</ion-modal>
 
     <!-- Modal Editar -->
-    <ion-modal [isOpen]="editEmpresas">
+     
+    <ion-modal [isOpen]="showEditEmpresasModal"  (didDismiss)="closeEditEmpresasModal()">
       <ng-template>
+
         <ion-header>
           <ion-toolbar color="primary">
             <ion-title>Editar Empresa</ion-title>
@@ -104,55 +106,75 @@
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
-        <div>
-          <ion-item>
-            <ion-label position="floating">Nombre</ion-label>
-            <ion-input [(ngModel)]="editCompanyName" placeholder="Nombre"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>País</ion-label>
-            <ion-select [(ngModel)]="selectedCountry">
-              <ion-select-option *ngFor="let country of allPais" [value]="country.COU_ID">
-                {{ country.COU_NAME }}
-              </ion-select-option>
-            </ion-select>
-          </ion-item>
 
-          <!-- Activar/Desactivar STX -->
-          <ion-item>
-            <ion-label>Desactivar STX</ion-label>
-            <ion-toggle [(ngModel)]="isActiveSTX"></ion-toggle>
-          </ion-item>
-          <ion-footer>
-            <ion-button expand="block" (click)="requestUpdate(fpupd)">Actualizar</ion-button>
+        <div>
+          <div class="p-2">
+            <ion-item lines="none">
+              <ion-label position="stacked" class="mb-2">Nombre</ion-label>
+              <ion-input class="text-black" [(ngModel)]="editCompanyName" placeholder="Nombre"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-label position="stacked" class="mb-2">País</ion-label>
+              <ion-select class="text-black" color="light" [(ngModel)]="selectedCountry">
+                <ion-select-option class="text-black" *ngFor="let country of allPais" [value]="country.COU_ID">
+                  {{ country.COU_NAME }}
+                </ion-select-option>
+              </ion-select>
+              </ion-item>
+
+              <!-- Activar/Desactivar STX -->
+              <ion-item lines="none">
+                <ion-label position="stacked" class="mb-2">Desactivar STX</ion-label>
+                <ion-toggle [(ngModel)]="isActiveSTX"></ion-toggle>
+              </ion-item>
+          </div>
+
+          <ion-footer class="pe-3">
+            <ion-toolbar>
+              <ion-buttons slot="end">
+                <ion-button color="primary" fill="outline" (click)="requestUpdate(fpupd)">Actualizar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
           </ion-footer>
         </div>
+        
       </ng-template>
     </ion-modal>
 
     <!-- Modal Eliminar -->
-    <ion-modal [isOpen]="deleteEmpresas">
-      <ng-template>
-        <ion-header>
-          <ion-toolbar color="danger">
-            <ion-title>Eliminar Empresa</ion-title>
-            <ion-buttons slot="end">
-              <ion-button (click)="closeDeleteEmpresasModal()">Cerrar</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <div>
-          <ion-text color="danger">
-            <h2 class="ion-text-center">¿Estás seguro de eliminar la empresa?</h2>
-            <p class="ion-text-center">
-              <strong>{{ deleteCompanyName }}</strong>
-            </p>
-          </ion-text>
-          <ion-footer>
-            <ion-button expand="block" color="danger" (click)="requestDelete(fpdel)">Eliminar</ion-button>
-          </ion-footer>
-        </div>
-      </ng-template>
-    </ion-modal>
+	<ion-modal [isOpen]="showDeleteEmpresasModal"  (didDismiss)="closeDeleteEmpresasModal()">
+		<ng-template>
+
+			<ion-header>
+			<ion-toolbar color="danger">
+				<ion-title>Eliminar Empresa</ion-title>
+				<ion-buttons slot="end">
+				<ion-button (click)="closeDeleteEmpresasModal()">Cerrar</ion-button>
+				</ion-buttons>
+			</ion-toolbar>
+			</ion-header>
+
+			<div>
+			<div class="p-2">
+				<ion-text color="danger">
+				  <h2 class="ion-text-center">¿Estás seguro de eliminar la empresa?</h2>
+				  <p class="ion-text-center">
+					<strong>{{ deleteCompanyName }}</strong>
+				  </p>
+				</ion-text>
+			</div>
+
+			<ion-footer class="pe-3">
+				<ion-toolbar>
+				<ion-buttons slot="end">
+					<ion-button color="danger" fill="outline" (click)="requestDelete(fpdel)">Eliminar</ion-button>
+				</ion-buttons>
+				</ion-toolbar>
+			</ion-footer>
+			</div>
+			
+		</ng-template>
+	</ion-modal>
   </ion-card>
 </div>

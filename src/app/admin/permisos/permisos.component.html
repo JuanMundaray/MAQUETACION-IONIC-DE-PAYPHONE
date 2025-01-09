@@ -1,141 +1,123 @@
 <div>
 
-  <div class="bg-white ion-padding pt-4">
-  <!-- Botón Nuevo -->
-	 <app-boton-verde  (click)="addPerm()">
+	<div class="bg-white ion-padding pt-4">
+	<!-- Botón Nuevo -->
+		<app-boton-verde  (click)="addPerm()">
 		Nuevo
-	 </app-boton-verde>
+		</app-boton-verde>
 
-	 <app-content-modules-admin-dashboard>
-		
-		<span content-header>Administración de Usuarios Admin</span>
+		<app-content-modules-admin-dashboard>
+			<span content-header>Administración de Usuarios Admin</span>
 
-		<div content-grid>
-			<ion-row class="table-header">
-				<ion-col>Fecha Creado</ion-col>
-				<ion-col>Activo</ion-col>
-				<ion-col>Nombre</ion-col>
-				<ion-col>Acceso</ion-col>
-				<ion-col>Global</ion-col>
-				<ion-col>Acciones</ion-col>
-			</ion-row>
+			<div content-grid>
+				<ion-row class="table-header">
+					<ion-col>Fecha Creado</ion-col>
+					<ion-col>Activo</ion-col>
+					<ion-col>Nombre</ion-col>
+					<ion-col>Acceso</ion-col>
+					<ion-col>Global</ion-col>
+					<ion-col>Acciones</ion-col>
+				</ion-row>
 
-			<ion-row *ngFor="let per of allPerm">
-				<ion-col>{{ per.PER_CA | date: 'dd-MM-yyyy hh:mma':'UTC 6' }}</ion-col>
-				<ion-col>
-				<ion-checkbox [checked]="per.PER_ACTIVE == 1" disabled></ion-checkbox>
-				</ion-col>
-				<ion-col>{{ per.PER_NAME }}</ion-col>
-				<ion-col>{{ per.PER_ACCESS }}</ion-col>
-				<ion-col>
-				<ion-checkbox [checked]="per.PER_APPLY == 1" disabled></ion-checkbox>
-				</ion-col>
-				<ion-col>
-				<ion-button color="primary" (click)="editperm(per.PER_ID, per.PER_APPLY, per.PER_NAME, per.PER_ACCESS)">
-					<ion-icon slot="start" name="pencil"></ion-icon>Editar
-				</ion-button>
-				<ion-button *ngIf="peradm" color="danger" (click)="deleteperm(per.PER_ID, per.PER_NAME)">
-					<ion-icon slot="start" name="trash"></ion-icon>Eliminar
-				</ion-button>
-				</ion-col>
-			</ion-row>
+				<ion-row *ngFor="let per of allPerm">
+					<ion-col>{{ per.PER_CA | date: 'dd-MM-yyyy hh:mma':'UTC 6' }}</ion-col>
+					<ion-col>
+					<ion-checkbox [checked]="per.PER_ACTIVE == 1" disabled></ion-checkbox>
+					</ion-col>
+					<ion-col>{{ per.PER_NAME }}</ion-col>
+					<ion-col>{{ per.PER_ACCESS }}</ion-col>
+					<ion-col>
+					<ion-checkbox [checked]="per.PER_APPLY == 1" disabled></ion-checkbox>
+					</ion-col>
+					<ion-col>
+					<ion-button color="primary" (click)="editperm(per.PER_ID, per.PER_APPLY, per.PER_NAME, per.PER_ACCESS)">
+						<ion-icon slot="start" name="pencil"></ion-icon>Editar
+					</ion-button>
+					<ion-button *ngIf="peradm" color="danger" (click)="deleteperm(per.PER_ID, per.PER_NAME)">
+						<ion-icon slot="start" name="trash"></ion-icon>Eliminar
+					</ion-button>
+					</ion-col>
+				</ion-row>
+			</div>
+		</app-content-modules-admin-dashboard>
+	</div>
+
+	<div class="page">
+		<!-- Modal Agregar Permiso -->
+		<ion-modal [isOpen]="isAddModalOpen" (didDismiss)="closeAddModal()">
+			<ng-template>
+				<ion-header>
+				<ion-toolbar color="primary">
+					<ion-title>Agregar Permiso</ion-title>
+					<ion-buttons slot="end">
+					<ion-button (click)="closeAddModal()">Cerrar</ion-button>
+					</ion-buttons>
+				</ion-toolbar>
+				</ion-header>
+				<div class="modal-content">
+				<ion-list class="bg-white">
+					<ion-item lines="none">
+					<ion-label class="text-black mb-3" position="stacked">Nombre</ion-label>
+					<ion-input class="padding-input" placeholder="Nombre" [(ngModel)]="newPermission.name"></ion-input>
+					</ion-item>
+					<ion-item lines="none">
+					<ion-label class="text-black mb-3" position="stacked">Acceso</ion-label>
+					<ion-input class="padding-input" placeholder="Acceso" [(ngModel)]="newPermission.access"></ion-input>
+					</ion-item>
+				</ion-list>
+				<ion-footer class="d-flex justify-content-end">
+					<ion-button class="m-4" color="primary" fill="outline" (click)="requestAdd()">Guardar</ion-button>
+				</ion-footer>
+				</div>
+			</ng-template>
+		</ion-modal>
+
+		<div class="page">
+		<!-- Resto del contenido de la página -->
 		</div>
-    </app-content-modules-admin-dashboard>
-  </div>
 
-  <div class="page">
-  <!-- Modal Agregar Permiso -->
-<ion-modal [isOpen]="isAddModalOpen" (didDismiss)="closeAddModal()">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Agregar Permiso</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="closeAddModal()">Cerrar</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <div class="modal-content">
-      <ion-list class="bg-white">
-        <ion-item lines="none">
-          <ion-label class="text-black mb-3" position="stacked">Nombre</ion-label>
-          <ion-input class="padding-input" placeholder="Nombre" [(ngModel)]="newPermission.name"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-label class="text-black mb-3" position="stacked">Acceso</ion-label>
-          <ion-input class="padding-input" placeholder="Acceso" [(ngModel)]="newPermission.access"></ion-input>
-        </ion-item>
-      </ion-list>
-      <ion-footer class="d-flex justify-content-end">
-        <ion-button class="m-4" color="primary" fill="outline" (click)="requestAdd()">Guardar</ion-button>
-      </ion-footer>
+		<!-- Modal Editar Permiso -->
+		<ion-modal [isOpen]="isEditModalOpen" (didDismiss)="closeEditModal()">
+			<ng-template>
+				<ion-header>
+				<ion-toolbar color="primary">
+					<ion-title>Editar Permiso</ion-title>
+					<ion-buttons slot="end">
+					<ion-button (click)="closeEditModal()">Cerrar</ion-button>
+					</ion-buttons>
+				</ion-toolbar>
+				</ion-header>
+				<div class="modal-content">
+				<ion-list class="bg-white">
+					<!-- Nombre -->
+					<ion-item lines="none">
+						<ion-label class="text-black mb-3" position="stacked">Nombre</ion-label>
+						<ion-input class="padding-input"  [(ngModel)]="editPermission.name" placeholder="Ingrese el nuevo nombre"></ion-input>
+					</ion-item>
+					<!-- Acceso -->
+					<ion-item lines="none">
+						<ion-label class="text-black mb-3" position="stacked">Acceso</ion-label>
+						<ion-input class="padding-input"  [(ngModel)]="editPermission.access" placeholder="Ingrese el nuevo acceso"></ion-input>
+					</ion-item>
+					<!-- Activar Global -->
+					<ion-item lines="none">
+						<ion-label class="text-black mb-3" position="stacked">Activo Global</ion-label>
+						<ion-segment [(ngModel)]="editPermission.isActiveGlobal">
+							<ion-segment-button value="0">
+							<ion-label class="text-black">No</ion-label>
+							</ion-segment-button>
+							<ion-segment-button value="1">
+							<ion-label class="text-black">Sí</ion-label>
+							</ion-segment-button>
+						</ion-segment>
+					</ion-item>
+				</ion-list>
+				<ion-footer class="d-flex justify-content-end">
+					<ion-button class="m-4" color="primary" fill="outline" (click)="requestUpdate(fpupd)">Actualizar</ion-button>
+				</ion-footer>
+				</div>
+			</ng-template>
+		</ion-modal>
     </div>
-  </ng-template>
-</ion-modal>
-
-<div class="page">
-  <!-- Resto del contenido de la página -->
-</div>
-
-    <!-- Modal Editar Permiso -->
-    <ion-modal [isOpen]="isEditModalOpen" (didDismiss)="closeEditModal()">
-      <ion-header>
-        <ion-toolbar color="primary">
-          <ion-title>Editar Permiso</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="closeEditModal()">Cerrar</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <div class="ion-padding">
-        <ion-grid>
-          <!-- Nombre -->
-          <ion-row>
-            <ion-col size="12">
-              <ion-item>
-                <ion-label position="stacked">Nombre <span class="aster">*</span></ion-label>
-                <ion-input [(ngModel)]="editPermission.name" placeholder="Ingrese el nuevo nombre"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-    
-          <!-- Acceso -->
-          <ion-row class="ion-margin-top">
-            <ion-col size="12">
-              <ion-item>
-                <ion-label position="floating">Acceso <span class="aster">*</span></ion-label>
-                <ion-input [(ngModel)]="editPermission.access" placeholder="Ingrese el nuevo acceso"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-    
-          <!-- Activo Global -->
-          <ion-row class="ion-margin-top" *ngIf="peradm">
-            <ion-col size="12">
-              <ion-item>
-                <ion-label>Activo Global</ion-label>
-                <ion-segment [(ngModel)]="editPermission.isActiveGlobal">
-                  <ion-segment-button value="0">
-                    <ion-label>No</ion-label>
-                  </ion-segment-button>
-                  <ion-segment-button value="1">
-                    <ion-label>Sí</ion-label>
-                  </ion-segment-button>
-                </ion-segment>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-      <ion-footer>
-        <ion-toolbar>
-          <ion-buttons slot="end">
-            <ion-button expand="block" color="primary" (click)="requestUpdate(fpupd)">Actualizar</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-footer>
-    </ion-modal>
-    
-  </div>
   
 </div>
