@@ -2,13 +2,14 @@
   <ion-card class="bg-white w-100 p-5">
 
     <ion-grid class="text-black w-100">
-      <!-- Componente de filtrado -->
-      <ion-row>
-        <ion-col size-md="4">
-          <ion-label>Buscar Usuario:</ion-label>
-          <ion-input style="text-align:start;" fill="outline" color="blue" [(ngModel)]="filterText" (ionInput)="filtrarUsuarios(filterText)" placeholder="Nombre o teléfono del usuario" clear-input></ion-input>
-        </ion-col>
-      </ion-row>
+    	<!-- Componente de filtrado -->
+		<ion-row>
+			<!-- Campo para buscar Usuarios -->
+			<ion-col size-md="4" class="d-flex flex-column align-items-center justify-content-start">
+				<ion-text class="text-start text-nowrap mb-1 w-100">Buscar Usuario:</ion-text>
+				<ion-input class="form_buscar" fill="outline" color="blue" [(ngModel)]="filterText" (ionInput)="filtrarUsuarios(filterText)" placeholder="Nombre o teléfono del usuario" clear-input></ion-input>
+			</ion-col>
+		</ion-row>
   
       <ion-row class="ion-margin-top">
         <!-- Usuarios -->

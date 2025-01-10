@@ -10,3 +10,11 @@ ion-modal{
   --max-width: 500px;
   --border-radius: 12px;
 }
+
+ion-label{
+  text-wrap:nowrap;
+}
+
+ion-col{
+  border-bottom: none
+}

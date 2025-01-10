@@ -80,3 +80,10 @@ letter-spacing: 1.05px;
 ion-col{
   border-bottom: none;
 }
+
+.form_buscar{
+  font-size: medium;
+  text-align: start;
+  min-height: 0 !important;
+  --highlight-color: none; 
+}

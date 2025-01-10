@@ -18,6 +18,7 @@
 					<ion-col>Acceso</ion-col>
 					<ion-col>Acciones</ion-col>
 				</ion-row>
+
 				<ion-row *ngFor="let rol of allRol">
 					<ion-col>{{ rol.ROL_CA | date: 'dd-MM-yyyy hh:mma' }}</ion-col>
 					<ion-col>
@@ -30,7 +31,6 @@
 					<ion-col>{{ rol.ROL_ACCESS }}</ion-col>
 					<ion-col>
 						<ion-button
-						*ngIf="perwrite"
 						color="primary"
 						(click)="editperm(rol.ROL_ID, rol.ROL_ACTIVE, rol.ROL_NAME, rol.ROL_ACCESS)"
 						>
@@ -38,7 +38,6 @@
 						Editar
 						</ion-button>
 						<ion-button
-						*ngIf="peradm"
 						color="danger"
 						(click)="deleteperm(rol.ROL_ID, rol.ROL_NAME)"
 						>
@@ -47,6 +46,7 @@
 						</ion-button>
 					</ion-col>
 				</ion-row>
+
 		</div>
 
 	</app-content-modules-admin-dashboard>
@@ -69,7 +69,7 @@
           <ion-label class="text-black mb-3" position="stacked">Acceso</ion-label>
           <ion-input class="padding-input" id="inpAddAccesoR" placeholder="Acceso"></ion-input>
         </ion-item>
-        <ion-footer class="mt-3 pb-3 d-flex justify-content-end pe-2">
+        <ion-footer class="mt-3 pb-3 d-flex justify-content-end align-items-center pe-2">
           <ion-button class="me-2" color="secondary" fill="outline" (click)="closeAddModal()">
             Cerrar
           </ion-button>
